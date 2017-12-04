@@ -1,4 +1,5 @@
-# TeacherPay - An analysis on teacher salaries to student outcomes across the world.
+# TeacherPay
+An analysis on teacher salaries to student outcomes across the world.
 
 ## Background and Overview
 As a former teacher, I had heard at some point that countries that paid their teachers the highest salaries also had the best overall education systems, which implied best student achievement.
