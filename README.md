@@ -42,5 +42,7 @@ Circle attributes:
  - Color will represent its continent
  
  
+![TeacherPay Mockup](https://github.com/brillantewang/teacherpay/blob/master/TeacherPay.png)
+
 
 
