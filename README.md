@@ -1,7 +1,7 @@
 # TeacherPay - An analysis on teacher salaries to student outcomes across the world.
 
 ## Background and Overview
-As a former teacher, I had heard at some point that countries that paid their teachers the highest salaries also had the best education systems.
+As a former teacher, I had heard at some point that countries that paid their teachers the highest salaries also had the best overall education systems, which implies best student achievement.
 
 This project will be a way to confirm if that is true by analyzing data provided by the Organization for Economic Cooperation and Development (OECD). TeacherPay will be a simple and beautiful visual tool that shows the relationship between teacher pay and student performance outcomes on science, math, and reading across the 35 countries that are members of the OECD.
 
