@@ -1,0 +1,24 @@
+{
+  "name": "teacherpay",
+  "version": "1.0.0",
+  "description": "An analysis on teacher salaries to student outcomes across the world.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brillantewang/teacherpay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brillantewang/teacherpay/issues"
+  },
+  "homepage": "https://github.com/brillantewang/teacherpay#readme",
+  "dependencies": {
+    "d3": "^4.12.0",
+    "webpack": "^3.10.0"
+  }
+}
