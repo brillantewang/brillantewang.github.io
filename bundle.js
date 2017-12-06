@@ -1394,8 +1394,8 @@ function azimuthalInvert(angle) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = linearish;
-/* unused harmony export default */
+/* harmony export (immutable) */ __webpack_exports__["b"] = linearish;
+/* harmony export (immutable) */ __webpack_exports__["a"] = linear;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3_array__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_d3_interpolate__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__continuous__ = __webpack_require__(44);
@@ -9499,8 +9499,9 @@ function transform(node) {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["b"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["d"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["e"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_d3_selection__ = __webpack_require__(2);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_23_d3_selection__["f"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_23_d3_selection__["f"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_d3_shape__ = __webpack_require__(428);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_d3_time__ = __webpack_require__(45);
@@ -19030,15 +19031,15 @@ var slice = [].slice;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_identity__ = __webpack_require__(397);
 /* unused harmony reexport scaleIdentity */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_linear__ = __webpack_require__(28);
-/* unused harmony reexport scaleLinear */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__src_linear__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_log__ = __webpack_require__(399);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__src_log__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__src_log__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_ordinal__ = __webpack_require__(149);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__src_ordinal__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_4__src_ordinal__["a"]; });
 /* unused harmony reexport scaleImplicit */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_pow__ = __webpack_require__(400);
 /* unused harmony reexport scalePow */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_5__src_pow__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_5__src_pow__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__src_quantile__ = __webpack_require__(401);
 /* unused harmony reexport scaleQuantile */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__src_quantize__ = __webpack_require__(402);
@@ -19050,7 +19051,7 @@ var slice = [].slice;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__src_utcTime__ = __webpack_require__(419);
 /* unused harmony reexport scaleUtc */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__src_category10__ = __webpack_require__(420);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_11__src_category10__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_11__src_category10__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__src_category20b__ = __webpack_require__(421);
 /* unused harmony reexport schemeCategory20b */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__src_category20c__ = __webpack_require__(422);
@@ -19251,7 +19252,7 @@ function identity() {
     return identity().domain(domain);
   };
 
-  return Object(__WEBPACK_IMPORTED_MODULE_1__linear__["a" /* linearish */])(scale);
+  return Object(__WEBPACK_IMPORTED_MODULE_1__linear__["b" /* linearish */])(scale);
 }
 
 
@@ -19478,7 +19479,7 @@ function pow() {
     return Object(__WEBPACK_IMPORTED_MODULE_2__continuous__["a" /* copy */])(scale, pow().exponent(exponent));
   };
 
-  return Object(__WEBPACK_IMPORTED_MODULE_1__linear__["a" /* linearish */])(scale);
+  return Object(__WEBPACK_IMPORTED_MODULE_1__linear__["b" /* linearish */])(scale);
 }
 
 function sqrt() {
@@ -19600,7 +19601,7 @@ function quantize() {
         .range(range);
   };
 
-  return Object(__WEBPACK_IMPORTED_MODULE_2__linear__["a" /* linearish */])(scale);
+  return Object(__WEBPACK_IMPORTED_MODULE_2__linear__["b" /* linearish */])(scale);
 }
 
 
@@ -20267,7 +20268,7 @@ function sequential(interpolator) {
     return sequential(interpolator).domain([x0, x1]).clamp(clamp);
   };
 
-  return Object(__WEBPACK_IMPORTED_MODULE_0__linear__["a" /* linearish */])(scale);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__linear__["b" /* linearish */])(scale);
 }
 
 
@@ -22633,22 +22634,24 @@ function nopropagation() {
 
 const buildGraph = () => {
   const outerWidth = 500;
-  const outerHeight = 500;
+  const outerHeight = 250;
+  const innerWidth = outerWidth - 30;
+  const innerHeight = outerHeight - 30;
   const rMin = 5;
   const rMax = 8;
   const xColumn = "salary_average";
-  const yColumn = "average_mean_score";
+  const yColumn = "percentile_average_mean_score";
   const rColumn = "GDP";
   const colorColumn = "region";
 
-  const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* select */]("body").append("svg")
+  const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* select */]("body").append("svg")
     .attr("width", 500)
     .attr("height", 500)
 
-  const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* scaleLog */]().range([0, outerWidth]);
-  const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* scaleLog */]().range([outerHeight, 0]);
-  const rScale = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* scaleSqrt */]().range([rMin, rMax]);
-  const colorScale = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* scaleOrdinal */](__WEBPACK_IMPORTED_MODULE_0_d3__["g" /* schemeCategory10 */]);
+  const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* scaleLog */]().range([0, innerWidth]);
+  const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* scaleLinear */]().range([innerHeight, 0]);
+  const rScale = __WEBPACK_IMPORTED_MODULE_0_d3__["g" /* scaleSqrt */]().range([rMin, rMax]);
+  const colorScale = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* scaleOrdinal */](__WEBPACK_IMPORTED_MODULE_0_d3__["h" /* schemeCategory10 */]);
 
   const render = data => {
     xScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["b" /* extent */](data, d => d[xColumn]));

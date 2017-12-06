@@ -2,11 +2,13 @@ import * as d3 from 'd3';
 
 const buildGraph = () => {
   const outerWidth = 500;
-  const outerHeight = 500;
+  const outerHeight = 250;
+  const innerWidth = outerWidth - 30;
+  const innerHeight = outerHeight - 30;
   const rMin = 5;
   const rMax = 8;
   const xColumn = "salary_average";
-  const yColumn = "average_mean_score";
+  const yColumn = "percentile_average_mean_score";
   const rColumn = "GDP";
   const colorColumn = "region";
 
@@ -14,8 +16,8 @@ const buildGraph = () => {
     .attr("width", 500)
     .attr("height", 500)
 
-  const xScale = d3.scaleLog().range([0, outerWidth]);
-  const yScale = d3.scaleLog().range([outerHeight, 0]);
+  const xScale = d3.scaleLog().range([0, innerWidth]);
+  const yScale = d3.scaleLinear().range([innerHeight, 0]);
   const rScale = d3.scaleSqrt().range([rMin, rMax]);
   const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
