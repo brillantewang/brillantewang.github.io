@@ -22658,7 +22658,7 @@ const buildGraph = () => {
 
   const yAxisG = g.append("g");
 
-  const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* scaleLinear */]().range([0, innerWidth]);
+  const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* scaleLinear */]().range([innerWidth, 0]);
   const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* scaleLinear */]().range([innerHeight, 0]);
   const rScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleSqrt */]().range([rMin, rMax]);
   const colorScale = __WEBPACK_IMPORTED_MODULE_0_d3__["g" /* scaleOrdinal */](__WEBPACK_IMPORTED_MODULE_0_d3__["i" /* schemeCategory10 */]);

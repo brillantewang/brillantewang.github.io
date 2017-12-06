@@ -26,7 +26,7 @@ const buildGraph = () => {
 
   const yAxisG = g.append("g");
 
-  const xScale = d3.scaleLinear().range([0, innerWidth]);
+  const xScale = d3.scaleLinear().range([innerWidth, 0]);
   const yScale = d3.scaleLinear().range([innerHeight, 0]);
   const rScale = d3.scaleSqrt().range([rMin, rMax]);
   const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
