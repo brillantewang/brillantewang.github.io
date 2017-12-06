@@ -22633,10 +22633,16 @@ function nopropagation() {
 
 
 const buildGraph = () => {
-  const outerWidth = 500;
-  const outerHeight = 250;
-  const innerWidth = outerWidth - 30;
-  const innerHeight = outerHeight - 30;
+  const outerWidth = 1000;
+  const outerHeight = 500;
+
+  const marginLeft = 70;
+  const marginRight = 70;
+  const marginTop = 70;
+  const marginBottom = 70;
+
+  const innerWidth = outerWidth - marginLeft - marginRight;
+  const innerHeight = outerHeight - marginTop - marginBottom;
   const rMin = 5;
   const rMax = 8;
   const xColumn = "salary_average";
@@ -22645,8 +22651,11 @@ const buildGraph = () => {
   const colorColumn = "region";
 
   const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* select */]("body").append("svg")
-    .attr("width", 500)
-    .attr("height", 500)
+    .attr("width", outerWidth)
+    .attr("height", outerHeight)
+
+  const g = svg.append("g")
+    .attr("transform", "translate(100, 100)");
 
   const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* scaleLog */]().range([0, innerWidth]);
   const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* scaleLinear */]().range([innerHeight, 0]);
@@ -22659,11 +22668,11 @@ const buildGraph = () => {
     rScale.domain([0, __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* max */](data, d => d[rColumn])]);
 
     //Enter
-    const circles = svg.selectAll("circle").data(data);
-    circles.enter().append("circle").attr("opacity", 0.7);
+    const circles = g.selectAll("circle").data(data);
+    circles.enter().append("circle").attr("opacity", 0.8);
 
     //Update
-    svg.selectAll("circle").data(data)
+    g.selectAll("circle").data(data)
       .attr("cx", d => xScale(d[xColumn]))
       .attr("cy", d => yScale(d[yColumn]))
       .attr("r", d => rScale(d[rColumn]))
