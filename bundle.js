@@ -22630,18 +22630,18 @@ function nopropagation() {
 
 
 const buildGraph = () => {
-  const outerWidth = 250;
-  const outerHeight = 250;
-  const rMin = 5;
-  const rMax = 20;
-  const xColumn = "salary";
-  const yColumn = "score";
+  const outerWidth = 500;
+  const outerHeight = 500;
+  const rMin = 30;
+  const rMax = 50;
+  const xColumn = "salary_average";
+  const yColumn = "average_mean_score";
   const rColumn = "GDP";
-  const colorColumn = "continent";
+  const colorColumn = "region";
 
   const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* select */]("body").append("svg")
-    .attr("width", 250)
-    .attr("height", 250)
+    .attr("width", 500)
+    .attr("height", 500)
 
   const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* scaleLinear */]().range([0, outerWidth]);
   const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* scaleLinear */]().range([outerHeight, 0]);
@@ -22678,7 +22678,7 @@ const buildGraph = () => {
     return d;
   }
 
-  __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* csv */]("./data/example.csv", type, render);
+  __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* csv */]("./data/master_filtered.csv", type, render);
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (buildGraph);

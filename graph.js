@@ -1,18 +1,18 @@
 import * as d3 from 'd3';
 
 const buildGraph = () => {
-  const outerWidth = 250;
-  const outerHeight = 250;
-  const rMin = 5;
-  const rMax = 20;
-  const xColumn = "salary";
-  const yColumn = "score";
+  const outerWidth = 500;
+  const outerHeight = 500;
+  const rMin = 30;
+  const rMax = 50;
+  const xColumn = "salary_average";
+  const yColumn = "average_mean_score";
   const rColumn = "GDP";
-  const colorColumn = "continent";
+  const colorColumn = "region";
 
   const svg = d3.select("body").append("svg")
-    .attr("width", 250)
-    .attr("height", 250)
+    .attr("width", 500)
+    .attr("height", 500)
 
   const xScale = d3.scaleLinear().range([0, outerWidth]);
   const yScale = d3.scaleLinear().range([outerHeight, 0]);
@@ -49,7 +49,7 @@ const buildGraph = () => {
     return d;
   }
 
-  d3.csv("./data/example.csv", type, render);
+  d3.csv("./data/master_filtered.csv", type, render);
 }
 
 export default buildGraph;
