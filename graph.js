@@ -7,7 +7,7 @@ const buildGraph = () => {
   const rMax = 20;
   const xColumn = "salary";
   const yColumn = "score";
-  const rColumn = "gdp";
+  const rColumn = "GDP";
   const colorColumn = "continent";
 
   const svg = d3.select("body").append("svg")
