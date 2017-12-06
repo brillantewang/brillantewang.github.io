@@ -26,12 +26,12 @@ const buildGraph = () => {
 
   const yAxisG = g.append("g");
 
-  const xScale = d3.scaleLinear().range([innerWidth, 0]);
+  const xScale = d3.scaleLog().range([innerWidth, 0]);
   const yScale = d3.scaleLinear().range([innerHeight, 0]);
   const rScale = d3.scaleSqrt().range([rMin, rMax]);
   const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-  const xAxis = d3.axisBottom(xScale);
-  const yAxis = d3.axisLeft(yScale);
+  const xAxis = d3.axisBottom(xScale).ticks(20).tickFormat(d3.format(".0s"));
+  const yAxis = d3.axisLeft(yScale).ticks(10);
 
   const render = data => {
     xScale.domain(d3.extent(data, d => d[xColumn]));
