@@ -3,8 +3,8 @@ import * as d3 from 'd3';
 const buildGraph = () => {
   const outerWidth = 500;
   const outerHeight = 500;
-  const rMin = 30;
-  const rMax = 50;
+  const rMin = 0;
+  const rMax = 2;
   const xColumn = "salary_average";
   const yColumn = "average_mean_score";
   const rColumn = "GDP";
@@ -14,15 +14,15 @@ const buildGraph = () => {
     .attr("width", 500)
     .attr("height", 500)
 
-  const xScale = d3.scaleLinear().range([0, outerWidth]);
-  const yScale = d3.scaleLinear().range([outerHeight, 0]);
-  const rScale = d3.scaleLinear().range([rMin, rMax]);
+  const xScale = d3.scaleLog().range([0, outerWidth]);
+  const yScale = d3.scaleLog().range([outerHeight, 0]);
+  const rScale = d3.scaleSqrt().range([rMin, rMax]);
   const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
   const render = data => {
     xScale.domain(d3.extent(data, d => d[xColumn]));
     yScale.domain(d3.extent(data, d => d[yColumn]));
-    rScale.domain(d3.extent(data, d => d[rColumn]));
+    rScale.domain([0, d3.max(data, d => d[rColumn])]);
 
     //Enter
     const circles = svg.selectAll("circle").data(data);
