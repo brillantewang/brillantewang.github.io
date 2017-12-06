@@ -60,7 +60,7 @@ const buildGraph = () => {
       .attr("fill", d => colorScale(d[colorColumn]))
       .duration(1000)
       .delay((d, i) => i * 100)
-      .ease("elastic");
+      .ease(d3.easeElastic.period(0.8));
 
     // circles
     //   .attr("cx", function(){ console.log('hello'); })
