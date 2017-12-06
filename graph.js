@@ -1,14 +1,14 @@
 import * as d3 from 'd3';
 
 const buildGraph = () => {
-  const outerWidth = 1000;
-  const outerHeight = 500;
+  const outerWidth = 1400;
+  const outerHeight = 700;
   const margin = { left: 70, top: 70, right: 70, bottom: 70 };
 
   const innerWidth = outerWidth - margin.left - margin.right;
   const innerHeight = outerHeight - margin.top - margin.bottom;
-  const rMin = 5;
-  const rMax = 8;
+  const rMin = 8;
+  const rMax = 10;
   const xColumn = "salary_average";
   const yColumn = "percentile_average_mean_score";
   const rColumn = "GDP";
