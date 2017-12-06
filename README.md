@@ -68,15 +68,15 @@ In addition to the webpack entry file, there will be:
 Set up configuration by creating `webpack.config` and `package.json`. Write a basic entry file and skeleton for the two additional scripts. Goals for the day:
 
 - [x] Get webpack running and create index.html skeleton
-- [ ] Learn enough D3 to create basic visualizations with OECD data.
+- [x] Learn enough D3 to create basic visualizations with OECD data.
 - [x] Render a circle using D3.
 
 ### Day 2:
 Create basic visualization logic for country circles in `country.js` and basic movement logic in `graph.js`. Goals:
 
-- [ ] Have circle size a function of GDP
-- [ ] Have circle color a function of their continent
-- [ ] Create graph skeleton in `graph.js`
+- [x] Have circle size a function of GDP
+- [x] Have circle color a function of their region
+- [x] Create graph skeleton in `graph.js`
 - [ ] Have circles float to their positions in `graph.js`
 
 ### Day 3:

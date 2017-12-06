@@ -22634,8 +22634,8 @@ function nopropagation() {
 const buildGraph = () => {
   const outerWidth = 500;
   const outerHeight = 500;
-  const rMin = 0;
-  const rMax = 2;
+  const rMin = 5;
+  const rMax = 8;
   const xColumn = "salary_average";
   const yColumn = "average_mean_score";
   const rColumn = "GDP";
@@ -22657,7 +22657,7 @@ const buildGraph = () => {
 
     //Enter
     const circles = svg.selectAll("circle").data(data);
-    circles.enter().append("circle");
+    circles.enter().append("circle").attr("opacity", 0.7);
 
     //Update
     svg.selectAll("circle").data(data)
