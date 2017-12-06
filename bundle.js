@@ -22641,7 +22641,7 @@ const buildGraph = () => {
   const innerWidth = outerWidth - margin.left - margin.right;
   const innerHeight = outerHeight - margin.top - margin.bottom;
   const rMin = 8;
-  const rMax = 10;
+  const rMax = 12;
   const xColumn = "salary_average";
   const yColumn = "percentile_average_mean_score";
   const rColumn = "GDP";
@@ -22655,9 +22655,11 @@ const buildGraph = () => {
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
   const xAxisG = g.append("g")
+    .attr("class", "x axis")
     .attr("transform", `translate(0, ${innerHeight})`);
 
-  const yAxisG = g.append("g");
+  const yAxisG = g.append("g")
+    .attr("class", "y axis");
 
   const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleLog */]().range([innerWidth, 0]);
   const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["g" /* scaleLinear */]().range([innerHeight, 0]);
@@ -22680,10 +22682,18 @@ const buildGraph = () => {
 
     //Update
     g.selectAll("circle").data(data)
+      .attr("cx", 0)
+      .attr("cy", innerHeight)
+      .attr("r", 0)
+
+    g.selectAll("circle").data(data).transition()
       .attr("cx", d => xScale(d[xColumn]))
       .attr("cy", d => yScale(d[yColumn]))
       .attr("r", d => rScale(d[rColumn]))
       .attr("fill", d => colorScale(d[colorColumn]))
+      .duration(1000)
+      .delay((d, i) => i * 100)
+      .ease("elastic");
 
     // circles
     //   .attr("cx", function(){ console.log('hello'); })

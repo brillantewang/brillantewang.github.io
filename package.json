@@ -20,6 +20,7 @@
   "homepage": "https://github.com/brillantewang/teacherpay#readme",
   "dependencies": {
     "d3": "^4.12.0",
+    "d3-ease": "^1.0.3",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.5"
   }
