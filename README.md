@@ -34,7 +34,7 @@ Users will be able to:
 Bonus:
 - [ ] Users will be able to click and drag a country around and have it bounce back to its original position upon letting go.
 
-### Wireframes
+## Wireframes
 
 TeacherPay will show a single graph populated with circles representing different countries. There will be a graph-wide filter for which continent to display (although Australia will be clumped together with `Western Countries`, along with the US and Canada).
 
@@ -44,7 +44,7 @@ Circle attributes:
 
 ![TeacherPay Mockup](https://github.com/brillantewang/teacherpay/blob/master/TeacherPay.png)
 
-### Architecture & Technologies
+## Architecture & Technologies
 
 The teacher salary and student performance data for this project will be provided by the OECD.
 - [Teacher Salary Data](http://stats.oecd.org/viewhtml.aspx?datasetcode=EAG_TS_STA&lang=en#)
@@ -63,15 +63,15 @@ In addition to the webpack entry file, there will be:
 - `country.js`: This script will handle the visual/interaction logic for a country bubble.
 - `graph.js`: This script will handle the overall logic for countries floating onto the graph in response to toggling between filters.
 
-### Implementation Timeline
-# Day 1:
+## Implementation Timeline
+### Day 1:
 Set up configuration by creating `webpack.config` and `package.json`. Write a basic entry file and skeleton for the two additional scripts. Goals for the day:
 
 - [ ] Get webpack running and create index.html skeleton
 - [ ] Learn enough D3 to create basic visualizations with OECD data.
 - [ ] Render a circle using D3.
 
-# Day 2:
+### Day 2:
 Create basic visualization logic for country circles in `country.js` and basic movement logic in `graph.js`. Goals:
 
 - [ ] Have circle size a function of GDP
@@ -79,14 +79,14 @@ Create basic visualization logic for country circles in `country.js` and basic m
 - [ ] Create graph skeleton in `graph.js`
 - [ ] Have circles float to their positions in `graph.js`
 
-# Day 3:
+### Day 3:
 Add filters and flesh out `country.js`
 
 - [ ] Add filter logic to `graph.js` so countries float to their correct positions depending on filter
 - [ ] Add checkboxes for continent and logic for countries to fade in or out to `graph.js`
 - [ ] Add logic to `country.js` allowing circle to expand with `click` event handler and show additional information
 
-# Day 4:
+### Day 4:
 Create initialization animation in `graph.js`
 
 - [ ] Add animation logic to `graph.js` so that countries float to their correct position at an accelerated rate upon initialization
