@@ -22636,7 +22636,7 @@ function nopropagation() {
 const buildGraph = () => {
   const outerWidth = 1400;
   const outerHeight = 700;
-  const margin = { left: 70, top: 70, right: 70, bottom: 70 };
+  const margin = { left: 200, top: 70, right: 70, bottom: 100 };
 
   const innerWidth = outerWidth - margin.left - margin.right;
   const innerHeight = outerHeight - margin.top - margin.bottom;
@@ -22646,6 +22646,9 @@ const buildGraph = () => {
   const yColumn = "percentile_average_mean_score";
   const rColumn = "GDP";
   const colorColumn = "region";
+
+  const xAxisLabelText = "Teacher Salary in USD (converted using PPP)";
+  const xAxisLabelOffset = 75;
 
   const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").append("svg")
     .attr("width", outerWidth)
@@ -22657,6 +22660,13 @@ const buildGraph = () => {
   const xAxisG = g.append("g")
     .attr("class", "x axis")
     .attr("transform", `translate(0, ${innerHeight})`);
+
+  const xAxisLabel = xAxisG.append("text")
+    .style("text-anchor", "middle")
+    .attr("x", innerWidth / 2)
+    .attr("y", xAxisLabelOffset)
+    .attr("class", "label")
+    .text(xAxisLabelText);
 
   const yAxisG = g.append("g")
     .attr("class", "y axis");
@@ -22691,9 +22701,9 @@ const buildGraph = () => {
       .attr("cy", d => yScale(d[yColumn]))
       .attr("r", d => rScale(d[rColumn]))
       .attr("fill", d => colorScale(d[colorColumn]))
-      .duration(1000)
+      .duration(1500)
       .delay((d, i) => i * 100)
-      .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.8));
+      .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
 
     // circles
     //   .attr("cx", function(){ console.log('hello'); })

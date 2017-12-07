@@ -22,7 +22,7 @@ Countries will be represented by colored circles.
 
 Upon initialization:
 
-- [ ] Countries will float onto the graph one by one to their respective positions starting from the bottom-left corner to the top-right corner at an accelerating rate.
+- [ ] Countries will bounce onto the graph one by one to their respective positions.
 
 Users will be able to:
 
@@ -77,7 +77,7 @@ Create basic visualization logic for country circles in `country.js` and basic m
 - [x] Have circle size a function of GDP
 - [x] Have circle color a function of their region
 - [x] Create graph skeleton in `graph.js`
-- [ ] Have circles float to their positions in `graph.js`
+- [x] Have circles float to their positions in `graph.js`
 
 ### Day 3:
 Add filters and flesh out `country.js`

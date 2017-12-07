@@ -3,3 +3,8 @@
   /*font-family: 'Dosis', sans-serif;*/
   font-size: 20px;
 }
+
+.label {
+  fill: black;
+  font-size: 30px;
+}
