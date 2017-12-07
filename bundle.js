@@ -22669,9 +22669,9 @@ function nopropagation() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(172);
 
 
-const outerWidth = 1200;
+const outerWidth = 1250;
 const outerHeight = 600;
-const margin = { left: 200, top: 70, right: 70, bottom: 100 };
+const margin = { left: 250, top: 70, right: 50, bottom: 100 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
