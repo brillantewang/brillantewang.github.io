@@ -22650,6 +22650,9 @@ const buildGraph = () => {
   const xAxisLabelText = "Teacher Salary in USD (converted using PPP)";
   const xAxisLabelOffset = 75;
 
+  const yAxisLabelText = "Score Percentile";
+  const yAxisLabelOffset = 50;
+
   const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").append("svg")
     .attr("width", outerWidth)
     .attr("height", outerHeight)
@@ -22670,6 +22673,12 @@ const buildGraph = () => {
 
   const yAxisG = g.append("g")
     .attr("class", "y axis");
+
+  const yAxisLabel = yAxisG.append("text")
+    .style("text-anchor", "middle")
+    .attr("transform", `translate(-${yAxisLabelOffset}, ${innerHeight / 2}) rotate(-90)`)
+    .attr("class", "label")
+    .text(yAxisLabelText);
 
   const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* scaleLog */]().range([innerWidth, 0]);
   const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleLinear */]().range([innerHeight, 0]);

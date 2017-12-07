@@ -17,6 +17,9 @@ const buildGraph = () => {
   const xAxisLabelText = "Teacher Salary in USD (converted using PPP)";
   const xAxisLabelOffset = 75;
 
+  const yAxisLabelText = "Score Percentile";
+  const yAxisLabelOffset = 50;
+
   const svg = d3.select("body").append("svg")
     .attr("width", outerWidth)
     .attr("height", outerHeight)
@@ -37,6 +40,12 @@ const buildGraph = () => {
 
   const yAxisG = g.append("g")
     .attr("class", "y axis");
+
+  const yAxisLabel = yAxisG.append("text")
+    .style("text-anchor", "middle")
+    .attr("transform", `translate(-${yAxisLabelOffset}, ${innerHeight / 2}) rotate(-90)`)
+    .attr("class", "label")
+    .text(yAxisLabelText);
 
   const xScale = d3.scaleLog().range([innerWidth, 0]);
   const yScale = d3.scaleLinear().range([innerHeight, 0]);
