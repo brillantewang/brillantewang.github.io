@@ -6,7 +6,8 @@ import {
   mathScore,
   readingScore,
   score,
-  salary
+  salary,
+  updateRegion
 } from "./graph";
 
 initializeGraph();
@@ -46,3 +47,5 @@ document.getElementById("upper-secondary").addEventListener("click", () => {
 document.getElementById("average-salary").addEventListener("click", () => {
   salary("average")
 })
+
+d3.selectAll(".my-checkbox").on("change", updateRegion);

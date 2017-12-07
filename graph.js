@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-const outerWidth = 1400;
+const outerWidth = 1200;
 const outerHeight = 600;
 const margin = { left: 200, top: 70, right: 70, bottom: 100 };
 
@@ -138,66 +138,21 @@ export const salary = school_type => {
   d3.csv("./data/master_filtered.csv", render)
 }
 
-// export const averageScore = () => {
-//   const yColumn = "percentile_average_mean_score";
-//
-//   const render = data => {
-//     xScale.domain(d3.extent(data, d => d[xColumn]));
-//     yScale.domain(d3.extent(data, d => d[yColumn]));
-//
-//     g.selectAll("circle").data(data).transition()
-//       .attr("cy", d => yScale(d[yColumn]))
-//       .duration(2000)
-//       .ease(d3.easeElastic.period(0.7));
-//   }
-//
-//   d3.csv("./data/master_filtered.csv", render)
-// }
-//
-// export const scienceScore = () => {
-//   const yColumn = "percentile_science_mean_score";
-//
-//   const render = data => {
-//     xScale.domain(d3.extent(data, d => d[xColumn]));
-//     yScale.domain(d3.extent(data, d => d[yColumn]));
-//
-//     g.selectAll("circle").data(data).transition()
-//       .attr("cy", d => yScale(d[yColumn]))
-//       .duration(2000)
-//       .ease(d3.easeElastic.period(0.7));
-//   }
-//
-//   d3.csv("./data/master_filtered.csv", render)
-// }
-//
-// export const mathScore = () => {
-//   const yColumn = "percentile_math_mean_score";
-//
-//   const render = data => {
-//     xScale.domain(d3.extent(data, d => d[xColumn]));
-//     yScale.domain(d3.extent(data, d => d[yColumn]));
-//
-//     g.selectAll("circle").data(data).transition()
-//       .attr("cy", d => yScale(d[yColumn]))
-//       .duration(2000)
-//       .ease(d3.easeElastic.period(0.7));
-//   }
-//
-//   d3.csv("./data/master_filtered.csv", render)
-// }
-//
-// export const readingScore = () => {
-//   const yColumn = "percentile_reading_mean_score";
-//
-//   const render = data => {
-//     xScale.domain(d3.extent(data, d => d[xColumn]));
-//     yScale.domain(d3.extent(data, d => d[yColumn]));
-//
-//     g.selectAll("circle").data(data).transition()
-//       .attr("cy", d => yScale(d[yColumn]))
-//       .duration(2000)
-//       .ease(d3.easeElastic.period(0.7));
-//   }
-//
-//   d3.csv("./data/master_filtered.csv", render)
-// }
+export const updateRegion = () => {
+  const checkedRegions = [];
+
+  d3.selectAll(".my-checkbox").each(function(d) {
+    let checkbox = d3.select(this);
+    if (checkbox.property("checked")) {
+      checkedRegions.push(checkbox.property("value"));
+    }
+  });
+
+  const render = data => {
+    g.selectAll("circle").data(data).transition()
+      .attr("opacity", d => checkedRegions.includes(d.region) ? 0.8 : 0)
+      .duration(500)
+  }
+
+  d3.csv("./data/master_filtered.csv", render)
+}

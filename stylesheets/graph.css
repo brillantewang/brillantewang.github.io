@@ -34,13 +34,13 @@ h1 {
 h3 {
   margin-top: 10px;
   text-align: center;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 button {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 8px 5px 8px;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 svg {
@@ -85,4 +85,32 @@ svg {
 
 .school-type-btn {
   margin-left: 10px;
+}
+
+.regions-checkboxes {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 50px;
+  font-size: 20px;
+}
+
+#europe {
+  color: #FF983E;
+}
+
+#asia {
+  color: #A985CA;
+}
+
+#north-america {
+  color: #56B256;
+}
+
+#latin-america {
+  color: #DE5252;
+}
+
+#oceania {
+  color: #4B92C2;
 }
