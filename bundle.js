@@ -79,19 +79,33 @@ Object(__WEBPACK_IMPORTED_MODULE_1__graph__["a" /* initializeGraph */])();
 //   rows.forEach(d => console.log(`${d.col1} ${d.col2}`));
 // });
 document.getElementById("science").addEventListener("click", () => {
-  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("science")
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["c" /* score */])("science")
 })
 
 document.getElementById("average").addEventListener("click", () => {
-  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("average")
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["c" /* score */])("average")
 })
 
 document.getElementById("math").addEventListener("click", () => {
-  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("math")
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["c" /* score */])("math")
 })
 
 document.getElementById("reading").addEventListener("click", () => {
-  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("reading")
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["c" /* score */])("reading")
+})
+
+//school type buttons
+
+document.getElementById("primary").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* salary */])("primary")
+})
+
+document.getElementById("lower-secondary").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* salary */])("lower_secondary")
+})
+
+document.getElementById("upper-secondary").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* salary */])("upper_secondary")
 })
 
 
@@ -22753,7 +22767,6 @@ const score = subject => {
   const yColumn = `percentile_${subject}_mean_score`;
 
   const render = data => {
-    xScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[xColumn]));
     yScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[yColumn]));
 
     g.selectAll("circle").data(data).transition()
@@ -22764,7 +22777,24 @@ const score = subject => {
 
   __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", render)
 }
-/* harmony export (immutable) */ __webpack_exports__["b"] = score;
+/* harmony export (immutable) */ __webpack_exports__["c"] = score;
+
+
+const salary = school_type => {
+  const xColumn = `salary_${school_type}`;
+
+  const render = data => {
+    xScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[xColumn]));
+
+    g.selectAll("circle").data(data).transition()
+      .attr("cx", d => xScale(d[xColumn]))
+      .duration(2000)
+      .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
+  }
+
+  __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", render)
+}
+/* harmony export (immutable) */ __webpack_exports__["b"] = salary;
 
 
 // export const averageScore = () => {

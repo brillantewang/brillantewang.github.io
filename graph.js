@@ -103,11 +103,25 @@ export const score = subject => {
   const yColumn = `percentile_${subject}_mean_score`;
 
   const render = data => {
-    xScale.domain(d3.extent(data, d => d[xColumn]));
     yScale.domain(d3.extent(data, d => d[yColumn]));
 
     g.selectAll("circle").data(data).transition()
       .attr("cy", d => yScale(d[yColumn]))
+      .duration(2000)
+      .ease(d3.easeElastic.period(0.7));
+  }
+
+  d3.csv("./data/master_filtered.csv", render)
+}
+
+export const salary = school_type => {
+  const xColumn = `salary_${school_type}`;
+
+  const render = data => {
+    xScale.domain(d3.extent(data, d => d[xColumn]));
+
+    g.selectAll("circle").data(data).transition()
+      .attr("cx", d => xScale(d[xColumn]))
       .duration(2000)
       .ease(d3.easeElastic.period(0.7));
   }

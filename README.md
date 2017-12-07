@@ -82,7 +82,7 @@ Create basic visualization logic for country circles in `country.js` and basic m
 ### Day 3:
 Add filters and flesh out `country.js`
 
-- [ ] Add filter logic to `graph.js` so countries float to their correct positions depending on filter
+- [x] Add filter logic to `graph.js` so countries float to their correct positions depending on filter
 - [ ] Add checkboxes for continent and logic for countries to fade in or out to `graph.js`
 - [ ] Add logic to `country.js` allowing circle to expand with `click` event handler and show additional information
 

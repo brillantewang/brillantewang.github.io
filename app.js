@@ -5,7 +5,8 @@ import {
   averageScore,
   mathScore,
   readingScore,
-  score
+  score,
+  salary
 } from "./graph";
 
 initializeGraph();
@@ -26,4 +27,18 @@ document.getElementById("math").addEventListener("click", () => {
 
 document.getElementById("reading").addEventListener("click", () => {
   score("reading")
+})
+
+//school type buttons
+
+document.getElementById("primary").addEventListener("click", () => {
+  salary("primary")
+})
+
+document.getElementById("lower-secondary").addEventListener("click", () => {
+  salary("lower_secondary")
+})
+
+document.getElementById("upper-secondary").addEventListener("click", () => {
+  salary("upper_secondary")
 })
