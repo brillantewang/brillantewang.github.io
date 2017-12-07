@@ -108,6 +108,10 @@ document.getElementById("upper-secondary").addEventListener("click", () => {
   Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* salary */])("upper_secondary")
 })
 
+document.getElementById("average-salary").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* salary */])("average")
+})
+
 
 /***/ }),
 /* 1 */
@@ -22663,7 +22667,7 @@ function nopropagation() {
 
 
 const outerWidth = 1400;
-const outerHeight = 700;
+const outerHeight = 600;
 const margin = { left: 200, top: 70, right: 70, bottom: 100 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
@@ -22681,7 +22685,7 @@ const xAxisLabelOffset = 75;
 const yAxisLabelText = "Score Percentile";
 const yAxisLabelOffset = 50;
 
-const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").append("svg")
+const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").insert("svg", ".school-type-btns")
   .attr("width", outerWidth)
   .attr("height", outerHeight)
 
@@ -22698,6 +22702,15 @@ const xAxisLabel = xAxisG.append("text")
   .attr("y", xAxisLabelOffset)
   .attr("class", "label")
   .text(xAxisLabelText);
+
+// const xAxisButtons = xAxisG.append("div")
+//   .attr("class", "subject-btns");
+//
+// xAxisButtons
+//   .append("button")
+//   .attr("class", "subject-btn")
+//   .attr("id", "average")
+//   .html("average")
 
 const yAxisG = g.append("g")
   .attr("class", "y axis");
@@ -22739,7 +22752,7 @@ const initializeGraph = () => {
       .attr("cy", d => yScale(d[yColumn]))
       .attr("r", d => rScale(d[rColumn]))
       .attr("fill", d => colorScale(d[colorColumn]))
-      .duration(1500)
+      .duration(1200)
       .delay((d, i) => i * 100)
       .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
 

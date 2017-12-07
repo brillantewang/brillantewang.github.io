@@ -42,3 +42,7 @@ document.getElementById("lower-secondary").addEventListener("click", () => {
 document.getElementById("upper-secondary").addEventListener("click", () => {
   salary("upper_secondary")
 })
+
+document.getElementById("average-salary").addEventListener("click", () => {
+  salary("average")
+})
