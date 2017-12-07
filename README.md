@@ -22,7 +22,7 @@ Countries will be represented by colored circles.
 
 Upon initialization:
 
-- [ ] Countries will bounce onto the graph one by one to their respective positions.
+- [x] Countries will bounce onto the graph one by one to their respective positions.
 
 Users will be able to:
 
@@ -89,7 +89,7 @@ Add filters and flesh out `country.js`
 ### Day 4:
 Create initialization animation in `graph.js`
 
-- [ ] Add animation logic to `graph.js` so that countries float to their correct position at an accelerated rate upon initialization
+- [x] Add animation logic to `graph.js` so that countries float to their correct position upon initialization
 
 If there is time:
 - [ ] Add logic to `graph.js` allowing user to click and drag circle before letting go and having it float back to original position

@@ -74,10 +74,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-Object(__WEBPACK_IMPORTED_MODULE_1__graph__["a" /* default */])();
+Object(__WEBPACK_IMPORTED_MODULE_1__graph__["a" /* initializeGraph */])();
 // d3.csv("./data/example.csv", rows => {
 //   rows.forEach(d => console.log(`${d.col1} ${d.col2}`));
 // });
+document.getElementById("science").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("science")
+})
+
+document.getElementById("average").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("average")
+})
+
+document.getElementById("math").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("math")
+})
+
+document.getElementById("reading").addEventListener("click", () => {
+  Object(__WEBPACK_IMPORTED_MODULE_1__graph__["b" /* score */])("reading")
+})
 
 
 /***/ }),
@@ -22633,60 +22648,60 @@ function nopropagation() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(172);
 
 
-const buildGraph = () => {
-  const outerWidth = 1400;
-  const outerHeight = 700;
-  const margin = { left: 200, top: 70, right: 70, bottom: 100 };
+const outerWidth = 1400;
+const outerHeight = 700;
+const margin = { left: 200, top: 70, right: 70, bottom: 100 };
 
-  const innerWidth = outerWidth - margin.left - margin.right;
-  const innerHeight = outerHeight - margin.top - margin.bottom;
-  const rMin = 8;
-  const rMax = 12;
-  const xColumn = "salary_average";
-  const yColumn = "percentile_average_mean_score";
-  const rColumn = "GDP";
-  const colorColumn = "region";
+const innerWidth = outerWidth - margin.left - margin.right;
+const innerHeight = outerHeight - margin.top - margin.bottom;
+const rMin = 8;
+const rMax = 12;
+const xColumn = "salary_average";
+const yColumn = "percentile_average_mean_score";
+const rColumn = "GDP";
+const colorColumn = "region";
 
-  const xAxisLabelText = "Teacher Salary in USD (converted using PPP)";
-  const xAxisLabelOffset = 75;
+const xAxisLabelText = "Teacher Salary in USD (converted using PPP)";
+const xAxisLabelOffset = 75;
 
-  const yAxisLabelText = "Score Percentile";
-  const yAxisLabelOffset = 50;
+const yAxisLabelText = "Score Percentile";
+const yAxisLabelOffset = 50;
 
-  const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").append("svg")
-    .attr("width", outerWidth)
-    .attr("height", outerHeight)
+const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").append("svg")
+  .attr("width", outerWidth)
+  .attr("height", outerHeight)
 
-  const g = svg.append("g")
-    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+const g = svg.append("g")
+  .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  const xAxisG = g.append("g")
-    .attr("class", "x axis")
-    .attr("transform", `translate(0, ${innerHeight})`);
+const xAxisG = g.append("g")
+  .attr("class", "x axis")
+  .attr("transform", `translate(0, ${innerHeight})`);
 
-  const xAxisLabel = xAxisG.append("text")
-    .style("text-anchor", "middle")
-    .attr("x", innerWidth / 2)
-    .attr("y", xAxisLabelOffset)
-    .attr("class", "label")
-    .text(xAxisLabelText);
+const xAxisLabel = xAxisG.append("text")
+  .style("text-anchor", "middle")
+  .attr("x", innerWidth / 2)
+  .attr("y", xAxisLabelOffset)
+  .attr("class", "label")
+  .text(xAxisLabelText);
 
-  const yAxisG = g.append("g")
-    .attr("class", "y axis");
+const yAxisG = g.append("g")
+  .attr("class", "y axis");
 
-  const yAxisLabel = yAxisG.append("text")
-    .style("text-anchor", "middle")
-    .attr("transform", `translate(-${yAxisLabelOffset}, ${innerHeight / 2}) rotate(-90)`)
-    .attr("class", "label")
-    .text(yAxisLabelText);
+const yAxisLabel = yAxisG.append("text")
+  .style("text-anchor", "middle")
+  .attr("transform", `translate(-${yAxisLabelOffset}, ${innerHeight / 2}) rotate(-90)`)
+  .attr("class", "label")
+  .text(yAxisLabelText);
 
-  const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* scaleLog */]().range([innerWidth, 0]);
-  const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleLinear */]().range([innerHeight, 0]);
-  const rScale = __WEBPACK_IMPORTED_MODULE_0_d3__["k" /* scaleSqrt */]().range([rMin, rMax]);
-  const colorScale = __WEBPACK_IMPORTED_MODULE_0_d3__["j" /* scaleOrdinal */](__WEBPACK_IMPORTED_MODULE_0_d3__["l" /* schemeCategory10 */]);
-  const xAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* axisBottom */](xScale).ticks(20).tickFormat(__WEBPACK_IMPORTED_MODULE_0_d3__["f" /* format */](".0s"));
-  const yAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* axisLeft */](yScale).ticks(10);
+const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* scaleLog */]().range([innerWidth, 0]);
+const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleLinear */]().range([innerHeight, 0]);
+const rScale = __WEBPACK_IMPORTED_MODULE_0_d3__["k" /* scaleSqrt */]().range([rMin, rMax]);
+const colorScale = __WEBPACK_IMPORTED_MODULE_0_d3__["j" /* scaleOrdinal */](__WEBPACK_IMPORTED_MODULE_0_d3__["l" /* schemeCategory10 */]);
+const xAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* axisBottom */](xScale).ticks(20).tickFormat(__WEBPACK_IMPORTED_MODULE_0_d3__["f" /* format */](".0s"));
+const yAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* axisLeft */](yScale).ticks(10);
 
+const initializeGraph = () => {
   const render = data => {
     xScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[xColumn]));
     yScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[yColumn]));
@@ -22714,6 +22729,7 @@ const buildGraph = () => {
       .delay((d, i) => i * 100)
       .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
 
+
     // circles
     //   .attr("cx", function(){ console.log('hello'); })
     //   .attr("cy", function(d){ return yScale(d.score); })
@@ -22722,16 +22738,98 @@ const buildGraph = () => {
     circles.exit().remove();
   }
 
-  const type = d => {
-    d.salary = +d.salary;
-    d.score = +d.score;
-    return d;
+  // const type = d => {
+  //   d.salary = +d.salary;
+  //   d.score = +d.score;
+  //   return d;
+  // }
+
+  __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", render);
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = initializeGraph;
+
+
+const score = subject => {
+  const yColumn = `percentile_${subject}_mean_score`;
+
+  const render = data => {
+    xScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[xColumn]));
+    yScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[yColumn]));
+
+    g.selectAll("circle").data(data).transition()
+      .attr("cy", d => yScale(d[yColumn]))
+      .duration(2000)
+      .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
   }
 
-  __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", type, render);
+  __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", render)
 }
+/* harmony export (immutable) */ __webpack_exports__["b"] = score;
 
-/* harmony default export */ __webpack_exports__["a"] = (buildGraph);
+
+// export const averageScore = () => {
+//   const yColumn = "percentile_average_mean_score";
+//
+//   const render = data => {
+//     xScale.domain(d3.extent(data, d => d[xColumn]));
+//     yScale.domain(d3.extent(data, d => d[yColumn]));
+//
+//     g.selectAll("circle").data(data).transition()
+//       .attr("cy", d => yScale(d[yColumn]))
+//       .duration(2000)
+//       .ease(d3.easeElastic.period(0.7));
+//   }
+//
+//   d3.csv("./data/master_filtered.csv", render)
+// }
+//
+// export const scienceScore = () => {
+//   const yColumn = "percentile_science_mean_score";
+//
+//   const render = data => {
+//     xScale.domain(d3.extent(data, d => d[xColumn]));
+//     yScale.domain(d3.extent(data, d => d[yColumn]));
+//
+//     g.selectAll("circle").data(data).transition()
+//       .attr("cy", d => yScale(d[yColumn]))
+//       .duration(2000)
+//       .ease(d3.easeElastic.period(0.7));
+//   }
+//
+//   d3.csv("./data/master_filtered.csv", render)
+// }
+//
+// export const mathScore = () => {
+//   const yColumn = "percentile_math_mean_score";
+//
+//   const render = data => {
+//     xScale.domain(d3.extent(data, d => d[xColumn]));
+//     yScale.domain(d3.extent(data, d => d[yColumn]));
+//
+//     g.selectAll("circle").data(data).transition()
+//       .attr("cy", d => yScale(d[yColumn]))
+//       .duration(2000)
+//       .ease(d3.easeElastic.period(0.7));
+//   }
+//
+//   d3.csv("./data/master_filtered.csv", render)
+// }
+//
+// export const readingScore = () => {
+//   const yColumn = "percentile_reading_mean_score";
+//
+//   const render = data => {
+//     xScale.domain(d3.extent(data, d => d[xColumn]));
+//     yScale.domain(d3.extent(data, d => d[yColumn]));
+//
+//     g.selectAll("circle").data(data).transition()
+//       .attr("cy", d => yScale(d[yColumn]))
+//       .duration(2000)
+//       .ease(d3.easeElastic.period(0.7));
+//   }
+//
+//   d3.csv("./data/master_filtered.csv", render)
+// }
 
 
 /***/ })
