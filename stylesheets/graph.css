@@ -8,3 +8,11 @@
   fill: black;
   font-size: 30px;
 }
+
+.subject-btn:focus {
+  background: #e0e0e0;
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 4px #ccc;
+  -moz-box-shadow: inset 0px 0px 4px #ccc;
+  box-shadow: inset 0px 0px 4px #ccc;
+}
