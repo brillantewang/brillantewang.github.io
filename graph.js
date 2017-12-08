@@ -91,21 +91,25 @@ export const initializeGraph = () => {
     circleGroups.enter().append("g")
       .attr("class", "circle-group")
       .attr("transform", d => `translate(0, ${innerHeight})`)
+      .on("click", function() {
+        d3.select(this).select("circle").transition().attr("r", 100);
+        d3.select(this).select("text").transition().style("display", "block");
+      })
+      .on('mouseout', function() {
+        d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
+        d3.select(this).select("text").transition().style("display", "none")
+      })
 
     g.selectAll("g.circle-group").append("circle")
       .attr("r", 0)
       .attr("opacity", 0.8)
-      .on("click", function() {
-        d3.select(this).transition().attr("r", 100)
-      })
-      .on('mouseout', function() {
-        d3.select(this).transition().attr("r", d => rScale(d[rColumn]))
-      })
 
+    //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
       .append("text")
       .text(d => d.country_code)
       .style("text-anchor", "middle")
+      .style("display", "none")
 
     //Update
     // g.selectAll("g.circle-group").data(data)
