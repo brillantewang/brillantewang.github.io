@@ -8,8 +8,8 @@ const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
 const rMin = 8;
 const rMax = 12;
-let xColumn = "salary_average";
-let yColumn = "percentile_average_mean_score";
+let xColumn;
+let yColumn;
 const rColumn = "GDP";
 const colorColumn = "region";
 
@@ -78,6 +78,9 @@ const xAxis = d3.axisBottom(xScale).ticks(20).tickFormat(d3.format(".0s"));
 const yAxis = d3.axisLeft(yScale).ticks(10);
 
 export const initializeGraph = () => {
+  xColumn = "salary_average";
+  yColumn = "percentile_average_mean_score";
+
   const render = data => {
     xScale.domain(d3.extent(data, d => d[xColumn]));
     yScale.domain(d3.extent(data, d => d[yColumn]));
@@ -95,14 +98,19 @@ export const initializeGraph = () => {
         d3.select(this).select("circle").transition().attr("r", 100);
         d3.select(this).select("text").transition().attr("opacity", 1);
       })
-      .on('mouseout', function() {
-        d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
-        d3.select(this).select("text").transition().attr("opacity", 0);
-      })
-
+      // .on('mouseout', function() {
+      //   d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
+      //   d3.select(this).select("text").transition().attr("opacity", 0);
+      // })
     g.selectAll("g.circle-group").append("circle")
       .attr("r", 0)
       .attr("opacity", 0.8)
+
+    g.selectAll("circle").data(data)
+      .on('mouseout', function() {
+        d3.select(this).transition().attr("r", d => rScale(d[rColumn]))
+        d3.select(this.parentNode).select("text").transition().attr("opacity", 0);
+      })
 
     //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
@@ -120,12 +128,14 @@ export const initializeGraph = () => {
 
     g.selectAll("g.circle-group").select("text")
       .append("tspan")
+      .attr("class", "salary-info")
       .attr("x", 0)
       .attr("dy", "1.2em")
       .text(d => `$${d[xColumn]}`)
 
     g.selectAll("g.circle-group").select("text")
       .append("tspan")
+      .attr("class", "score-info")
       .attr("x", 0)
       .attr("dy", "1.2em")
       .text(d => `${d[yColumn]}%`)
@@ -188,6 +198,9 @@ export const score = subject => {
       // .attr("cy", d => yScale(d[yColumn]))
       .duration(2000)
       .ease(d3.easeElastic.period(0.7));
+
+    g.selectAll(".score-info").data(data)
+      .text(d => `${d[yColumn]}%`)
   }
 
   d3.csv("./data/master_filtered.csv", render)
@@ -204,6 +217,9 @@ export const salary = school_type => {
       // .attr("cx", d => xScale(d[xColumn]))
       .duration(2000)
       .ease(d3.easeElastic.period(0.7));
+
+    g.selectAll(".salary-info").data(data)
+      .text(d => `$${d[xColumn]}`)
   }
 
   d3.csv("./data/master_filtered.csv", render)

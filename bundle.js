@@ -22677,8 +22677,8 @@ const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
 const rMin = 8;
 const rMax = 12;
-let xColumn = "salary_average";
-let yColumn = "percentile_average_mean_score";
+let xColumn;
+let yColumn;
 const rColumn = "GDP";
 const colorColumn = "region";
 
@@ -22747,6 +22747,9 @@ const xAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* axisBottom */](xScale).tic
 const yAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* axisLeft */](yScale).ticks(10);
 
 const initializeGraph = () => {
+  xColumn = "salary_average";
+  yColumn = "percentile_average_mean_score";
+
   const render = data => {
     xScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[xColumn]));
     yScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[yColumn]));
@@ -22764,14 +22767,19 @@ const initializeGraph = () => {
         __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("circle").transition().attr("r", 100);
         __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("text").transition().attr("opacity", 1);
       })
-      .on('mouseout', function() {
-        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
-        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("text").transition().attr("opacity", 0);
-      })
-
+      // .on('mouseout', function() {
+      //   d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
+      //   d3.select(this).select("text").transition().attr("opacity", 0);
+      // })
     g.selectAll("g.circle-group").append("circle")
       .attr("r", 0)
       .attr("opacity", 0.8)
+
+    g.selectAll("circle").data(data)
+      .on('mouseout', function() {
+        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).transition().attr("r", d => rScale(d[rColumn]))
+        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this.parentNode).select("text").transition().attr("opacity", 0);
+      })
 
     //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
@@ -22789,12 +22797,14 @@ const initializeGraph = () => {
 
     g.selectAll("g.circle-group").select("text")
       .append("tspan")
+      .attr("class", "salary-info")
       .attr("x", 0)
       .attr("dy", "1.2em")
       .text(d => `$${d[xColumn]}`)
 
     g.selectAll("g.circle-group").select("text")
       .append("tspan")
+      .attr("class", "score-info")
       .attr("x", 0)
       .attr("dy", "1.2em")
       .text(d => `${d[yColumn]}%`)
@@ -22859,6 +22869,9 @@ const score = subject => {
       // .attr("cy", d => yScale(d[yColumn]))
       .duration(2000)
       .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
+
+    g.selectAll(".score-info").data(data)
+      .text(d => `${d[yColumn]}%`)
   }
 
   __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", render)
@@ -22877,6 +22890,9 @@ const salary = school_type => {
       // .attr("cx", d => xScale(d[xColumn]))
       .duration(2000)
       .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
+
+    g.selectAll(".salary-info").data(data)
+      .text(d => `$${d[xColumn]}`)
   }
 
   __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", render)
