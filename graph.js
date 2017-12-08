@@ -8,8 +8,8 @@ const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
 const rMin = 8;
 const rMax = 12;
-const xColumn = "salary_average";
-const yColumn = "percentile_average_mean_score";
+let xColumn = "salary_average";
+let yColumn = "percentile_average_mean_score";
 const rColumn = "GDP";
 const colorColumn = "region";
 
@@ -87,21 +87,31 @@ export const initializeGraph = () => {
     yAxisG.call(yAxis);
 
     //Enter
-    const circles = g.selectAll("circle").data(data);
-    circles.enter().append("circle")
+    const circleGroups = g.selectAll("g.circle-group").data(data);
+    circleGroups.enter().append("g")
+      .attr("class", "circle-group")
+      .attr("transform", d => `translate(0, ${innerHeight})`)
+
+    g.selectAll("g.circle-group").append("circle")
+      .attr("r", 0)
       .attr("opacity", 0.8)
       .on("click", function() {
-        d3.select(this).transition().attr("r", 100).text("bruh")
+        d3.select(this).transition().attr("r", 100)
       })
       .on('mouseout', function() {
         d3.select(this).transition().attr("r", d => rScale(d[rColumn]))
       })
 
+    g.selectAll("g.circle-group").data(data)
+      .append("text")
+      .text(d => d.country_code)
+      .style("text-anchor", "middle")
+
     //Update
-    g.selectAll("circle").data(data)
-      .attr("cx", 0)
-      .attr("cy", innerHeight)
-      .attr("r", 0)
+    // g.selectAll("g.circle-group").data(data)
+    //   .attr("x", 0)
+    //   .attr("y", innerHeight)
+      // .attr("r", 0)
       // .on('mouseover', d => {
       //   tip.transition().duration(0);
       //   tip.style('top', `${yScale(d[yColumn]) + margin.top}px`);
@@ -114,15 +124,18 @@ export const initializeGraph = () => {
       //     .delay(500)
       // })
 
-    g.selectAll("circle").data(data).transition()
-      .attr("cx", d => xScale(d[xColumn]))
-      .attr("cy", d => yScale(d[yColumn]))
-      .attr("r", d => rScale(d[rColumn]))
-      .attr("fill", d => colorScale(d[colorColumn]))
+    g.selectAll("g.circle-group").data(data).transition()
+      .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
       .duration(1200)
       .delay((d, i) => i * 100)
       .ease(d3.easeElastic.period(0.7));
+      // .attr("cx", d => xScale(d[xColumn]))
+      // .attr("cy", d => yScale(d[yColumn]))
 
+    g.selectAll("circle").data(data).transition()
+      .attr("r", d => rScale(d[rColumn]))
+      .attr("fill", d => colorScale(d[colorColumn]))
+      .delay((d, i) => i * 100)
 
     // circles
     //   .attr("cx", function(){ console.log('hello'); })
@@ -142,13 +155,14 @@ export const initializeGraph = () => {
 }
 
 export const score = subject => {
-  const yColumn = `percentile_${subject}_mean_score`;
+  yColumn = `percentile_${subject}_mean_score`;
 
   const render = data => {
     yScale.domain(d3.extent(data, d => d[yColumn]));
 
-    g.selectAll("circle").data(data).transition()
-      .attr("cy", d => yScale(d[yColumn]))
+    g.selectAll("g.circle-group").data(data).transition()
+      .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
+      // .attr("cy", d => yScale(d[yColumn]))
       .duration(2000)
       .ease(d3.easeElastic.period(0.7));
   }
@@ -157,13 +171,14 @@ export const score = subject => {
 }
 
 export const salary = school_type => {
-  const xColumn = `salary_${school_type}`;
+  xColumn = `salary_${school_type}`;
 
   const render = data => {
     xScale.domain(d3.extent(data, d => d[xColumn]));
 
-    g.selectAll("circle").data(data).transition()
-      .attr("cx", d => xScale(d[xColumn]))
+    g.selectAll("g.circle-group").data(data).transition()
+      .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
+      // .attr("cx", d => xScale(d[xColumn]))
       .duration(2000)
       .ease(d3.easeElastic.period(0.7));
   }
