@@ -22688,9 +22688,24 @@ const xAxisLabelOffset = 75;
 const yAxisLabelText = "Score Percentile";
 const yAxisLabelOffset = 50;
 
-const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").insert("svg", ".school-type-btns")
+const svgContainer = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").insert("div", ".school-type-btns").attr("class", "svg-container");
+
+const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](".svg-container").insert("svg", ".school-type-btns")
   .attr("width", outerWidth)
   .attr("height", outerHeight)
+
+// const tip = d3.select('.svg-container').append('div')
+//   .attr('class', 'tip')
+//   .html('I am a tooltip...')
+//   .style('border', '1px solid black')
+//   .style('position', 'absolute')
+//   .style('display', 'none')
+//   .on('mouseover', d => {
+//     tip.transition().duration(0)
+//   })
+//   .on('mouseout', d => {
+//     tip.style('display', 'none')
+//   })
 
 const g = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -22742,13 +22757,31 @@ const initializeGraph = () => {
 
     //Enter
     const circles = g.selectAll("circle").data(data);
-    circles.enter().append("circle").attr("opacity", 0.8);
+    circles.enter().append("circle")
+      .attr("opacity", 0.8)
+      .on("click", function() {
+        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).transition().attr("r", 100).text("bruh")
+      })
+      .on('mouseout', function() {
+        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).transition().attr("r", d => rScale(d[rColumn]))
+      })
 
     //Update
     g.selectAll("circle").data(data)
       .attr("cx", 0)
       .attr("cy", innerHeight)
       .attr("r", 0)
+      // .on('mouseover', d => {
+      //   tip.transition().duration(0);
+      //   tip.style('top', `${yScale(d[yColumn]) + margin.top}px`);
+      //   tip.style('left', `${xScale(d[xColumn]) + margin.left}px`);
+      //   tip.style('display', `block`);
+      // })
+      // .on('mouseout', d => {
+      //   tip.transition()
+      //     .style('display', 'none')
+      //     .delay(500)
+      // })
 
     g.selectAll("circle").data(data).transition()
       .attr("cx", d => xScale(d[xColumn]))
