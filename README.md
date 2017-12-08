@@ -29,7 +29,7 @@ Users will be able to:
 - [x] Checkbox different continents and see countries fade in or out.
 - [x] Toggle between different PISA assessments (science, math, reading) on the Y axis and see countries float to their new positions.
 - [x] Toggle between different teacher types (primary, lower secondary, upper secondary) on the X axis and see countries float to their new positions.
-- [ ] Click on a country so that it expands and shows specific data points such as teacher salary, PISA mean score.
+- [x] Click on a country so that it expands and shows specific data points such as teacher salary and PISA mean score.
 
 Bonus:
 - [ ] Users will be able to click and drag a country around and have it bounce back to its original position upon letting go.
@@ -84,7 +84,7 @@ Add filters and flesh out `country.js`
 
 - [x] Add filter logic to `graph.js` so countries float to their correct positions depending on filter
 - [x] Add checkboxes for continent and logic for countries to fade in or out to `graph.js`
-- [ ] Add logic to `country.js` allowing circle to expand with `click` event handler and show additional information
+- [x] Add logic to `country.js` allowing circle to expand with `click` event handler and show additional information
 
 ### Day 4:
 Create initialization animation in `graph.js`

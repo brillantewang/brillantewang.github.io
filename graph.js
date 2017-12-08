@@ -116,6 +116,7 @@ export const initializeGraph = () => {
       .attr("x", 0)
       .attr("dy", "-10px")
       .text(d => d.country_name)
+      .style("font-size", "20px")
 
     g.selectAll("g.circle-group").select("text")
       .append("tspan")
