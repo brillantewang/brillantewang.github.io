@@ -99,6 +99,11 @@ button {
   z-index: 1;
 }
 
+.info {
+	height: 30px;
+	cursor: default;
+}
+
 #europe {
   color: #FF983E;
 }

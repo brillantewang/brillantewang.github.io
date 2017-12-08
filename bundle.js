@@ -22762,11 +22762,11 @@ const initializeGraph = () => {
       .attr("transform", d => `translate(0, ${innerHeight})`)
       .on("click", function() {
         __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("circle").transition().attr("r", 100);
-        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("text").transition().style("display", "block");
+        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("text").transition().attr("opacity", 1);
       })
       .on('mouseout', function() {
         __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
-        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("text").transition().style("display", "none")
+        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("text").transition().attr("opacity", 0);
       })
 
     g.selectAll("g.circle-group").append("circle")
@@ -22776,9 +22776,27 @@ const initializeGraph = () => {
     //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
       .append("text")
-      .text(d => d.country_code)
+      .attr("class", "info")
       .style("text-anchor", "middle")
-      .style("display", "none")
+      .attr("opacity", 0)
+
+    g.selectAll("g.circle-group").select("text")
+      .append("tspan")
+      .attr("x", 0)
+      .attr("dy", "-10px")
+      .text(d => d.country_name)
+
+    g.selectAll("g.circle-group").select("text")
+      .append("tspan")
+      .attr("x", 0)
+      .attr("dy", "1.2em")
+      .text(d => `$${d[xColumn]}`)
+
+    g.selectAll("g.circle-group").select("text")
+      .append("tspan")
+      .attr("x", 0)
+      .attr("dy", "1.2em")
+      .text(d => `${d[yColumn]}%`)
 
     //Update
     // g.selectAll("g.circle-group").data(data)

@@ -93,11 +93,11 @@ export const initializeGraph = () => {
       .attr("transform", d => `translate(0, ${innerHeight})`)
       .on("click", function() {
         d3.select(this).select("circle").transition().attr("r", 100);
-        d3.select(this).select("text").transition().style("display", "block");
+        d3.select(this).select("text").transition().attr("opacity", 1);
       })
       .on('mouseout', function() {
         d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
-        d3.select(this).select("text").transition().style("display", "none")
+        d3.select(this).select("text").transition().attr("opacity", 0);
       })
 
     g.selectAll("g.circle-group").append("circle")
@@ -107,9 +107,27 @@ export const initializeGraph = () => {
     //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
       .append("text")
-      .text(d => d.country_code)
+      .attr("class", "info")
       .style("text-anchor", "middle")
-      .style("display", "none")
+      .attr("opacity", 0)
+
+    g.selectAll("g.circle-group").select("text")
+      .append("tspan")
+      .attr("x", 0)
+      .attr("dy", "-10px")
+      .text(d => d.country_name)
+
+    g.selectAll("g.circle-group").select("text")
+      .append("tspan")
+      .attr("x", 0)
+      .attr("dy", "1.2em")
+      .text(d => `$${d[xColumn]}`)
+
+    g.selectAll("g.circle-group").select("text")
+      .append("tspan")
+      .attr("x", 0)
+      .attr("dy", "1.2em")
+      .text(d => `${d[yColumn]}%`)
 
     //Update
     // g.selectAll("g.circle-group").data(data)
