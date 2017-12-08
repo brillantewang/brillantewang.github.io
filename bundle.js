@@ -22682,7 +22682,7 @@ let yColumn;
 const rColumn = "GDP";
 const colorColumn = "region";
 
-const xAxisLabelText = "Teacher Salary in USD (converted using PPP)";
+const xAxisLabelText = "Annual Teacher Salary in USD (converted using PPP)";
 const xAxisLabelOffset = 75;
 
 const yAxisLabelText = "Score Percentile";
@@ -22762,10 +22762,18 @@ const initializeGraph = () => {
     const circleGroups = g.selectAll("g.circle-group").data(data);
     circleGroups.enter().append("g")
       .attr("class", "circle-group")
+      .attr("opacity", 0.8)
       .attr("transform", d => `translate(0, ${innerHeight})`)
       .on("click", function() {
-        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("circle").transition().attr("r", 100);
-        __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this).select("text").transition().attr("opacity", 1);
+        let circleGroup = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this);
+        if (circleGroup.select("circle").property("r") === 100) {
+          console.log('im big');
+          circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
+          circleGroup.select("text").transition().attr("opacity", 0);
+        } else {
+          circleGroup.select("circle").transition().attr("r", 100);
+          circleGroup.select("text").transition().attr("opacity", 1);
+        }
       })
       // .on('mouseout', function() {
       //   d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
@@ -22773,7 +22781,7 @@ const initializeGraph = () => {
       // })
     g.selectAll("g.circle-group").append("circle")
       .attr("r", 0)
-      .attr("opacity", 0.8)
+      // .attr("opacity", 0.8)
 
     g.selectAll("circle").data(data)
       .on('mouseout', function() {
@@ -22793,7 +22801,7 @@ const initializeGraph = () => {
       .attr("x", 0)
       .attr("dy", "-10px")
       .text(d => d.country_name)
-      .style("font-size", "20px")
+      .style("font-size", "24px")
 
     g.selectAll("g.circle-group").select("text")
       .append("tspan")
@@ -22911,7 +22919,7 @@ const updateRegion = () => {
   });
 
   const render = data => {
-    g.selectAll("circle").data(data).transition()
+    g.selectAll(".circle-group").data(data).transition()
       .attr("opacity", d => checkedRegions.includes(d.region) ? 0.8 : 0)
       .duration(500)
   }
