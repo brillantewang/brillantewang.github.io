@@ -268,7 +268,14 @@ export const updateRegion = () => {
     g.selectAll(".circle-group").data(data).transition()
       .attr("opacity", d => checkedRegions.includes(d.region) ? 0.8 : 0)
       .duration(500)
+      // .attr("class", d => checkedRegions.includes(d.region) ? "circle-group" : "circle-group hidden")
+      // see how to do something after a transition
   }
 
   d3.csv("./data/master_filtered.csv", render)
 }
+
+//TO DOS
+//see how to do something after a transition (for fading out regions and making class hidden)
+//see how to make money displayed as normal with commas
+//see how to make clicked bubbles go to front
