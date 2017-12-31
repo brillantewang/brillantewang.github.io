@@ -115,6 +115,7 @@ button {
 }
 
 .clicked {
+	position: absolute;
 	z-index: 1;
 }
 

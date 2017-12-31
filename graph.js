@@ -104,15 +104,18 @@ export const initializeGraph = () => {
 
         console.log(circleGroup.select("circle"));
         console.log(circleGroup.select("circle").attr("class"));
-        if (circleGroup.select("circle").attr("class") === "clicked") {
+        // if (circleGroup.select("circle").attr("class") === "clicked") {
+        if (circleGroup.attr("class") === "circle-group clicked") {
           console.log('im big');
           circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
           circleGroup.select("text").transition().attr("opacity", 0);
           circleGroup.select("text").attr("class", "info hidden");
-          circleGroup.select("circle").attr("class", "");
+          circleGroup.attr("class", "circle-group");
+          // circleGroup.select("circle").attr("class", "");
         } else {
           circleGroup.select("circle").transition().attr("r", 100);
-          circleGroup.select("circle").attr("class", "clicked");
+          // circleGroup.select("circle").attr("class", "clicked");
+          circleGroup.attr("class", "circle-group clicked");
           circleGroup.select("text").attr("class", "info");
           circleGroup.select("text").transition().attr("opacity", 1);
         }
