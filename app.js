@@ -18,7 +18,6 @@ initializeGraph();
 const toggleSelectedBtn = (btnId, btnClass) => {
   let selectedNode = document.getElementById(btnId);
   let otherNodes = document.getElementsByClassName(btnClass);
-  // let otherNodes = [];
 
   for (let i = 0; i < otherNodes.length; i++) {
     let currNode = otherNodes[i];
@@ -29,9 +28,6 @@ const toggleSelectedBtn = (btnId, btnClass) => {
       currNode.classList.remove("selected-btn");
     }
   }
-
-  console.log(selectedNode);
-  console.log(otherNodes);
 }
 
 document.getElementById("science").addEventListener("click", () => {
@@ -67,10 +63,12 @@ document.getElementById("lower-secondary").addEventListener("click", () => {
 })
 
 document.getElementById("upper-secondary").addEventListener("click", () => {
+  toggleSelectedBtn("upper-secondary", "school-type-btn");
   salary("upper_secondary")
 })
 
 document.getElementById("average-salary").addEventListener("click", () => {
+  toggleSelectedBtn("average-salary", "school-type-btn");
   salary("average")
 })
 
