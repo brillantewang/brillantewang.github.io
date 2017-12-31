@@ -15,13 +15,13 @@ initializeGraph();
 //   rows.forEach(d => console.log(`${d.col1} ${d.col2}`));
 // });
 
-const toggleSelectedNode = subject => {
-  let selectedNode = document.getElementById(subject);
-  let subjectNodes = document.getElementsByClassName("subject-btn");
+const toggleSelectedBtn = (btnId, btnClass) => {
+  let selectedNode = document.getElementById(btnId);
+  let otherNodes = document.getElementsByClassName(btnClass);
   // let otherNodes = [];
 
-  for (let i = 0; i < subjectNodes.length; i++) {
-    let currNode = subjectNodes[i];
+  for (let i = 0; i < otherNodes.length; i++) {
+    let currNode = otherNodes[i];
 
     if (currNode === selectedNode) {
       currNode.classList.add("selected-btn");
@@ -31,36 +31,38 @@ const toggleSelectedNode = subject => {
   }
 
   console.log(selectedNode);
-  console.log(subjectNodes);
+  console.log(otherNodes);
 }
 
 document.getElementById("science").addEventListener("click", () => {
-  toggleSelectedNode("science");
+  toggleSelectedBtn("science", "subject-btn");
   score("science")
 })
 
 document.getElementById("average").addEventListener("click", () => {
-  toggleSelectedNode("average");
+  toggleSelectedBtn("average", "subject-btn");
   score("average")
 })
 
 document.getElementById("math").addEventListener("click", () => {
-  toggleSelectedNode("math");
+  toggleSelectedBtn("math", "subject-btn");
   score("math")
 })
 
 document.getElementById("reading").addEventListener("click", () => {
-  toggleSelectedNode("reading");
+  toggleSelectedBtn("reading", "subject-btn");
   score("reading")
 })
 
 //school type buttons
 
 document.getElementById("primary").addEventListener("click", () => {
+  toggleSelectedBtn("primary", "school-type-btn");
   salary("primary")
 })
 
 document.getElementById("lower-secondary").addEventListener("click", () => {
+  toggleSelectedBtn("lower-secondary", "school-type-btn");
   salary("lower_secondary")
 })
 
