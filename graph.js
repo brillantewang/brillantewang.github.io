@@ -1,8 +1,8 @@
 import * as d3 from 'd3';
 
-const outerWidth = 1250;
-const outerHeight = 600;
-const margin = { left: 250, top: 70, right: 50, bottom: 100 };
+const outerWidth = 1400;
+const outerHeight = 620;
+const margin = { left: 200, top: 120, right: 100, bottom: 100 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
