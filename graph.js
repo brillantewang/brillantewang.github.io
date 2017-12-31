@@ -151,7 +151,10 @@ export const initializeGraph = () => {
       .attr("class", "salary-info")
       .attr("x", 0)
       .attr("dy", "1.2em")
-      .text(d => `$${d[xColumn]}`)
+      .text(d => {
+        let salary = Math.round(d[xColumn]);
+        return `$${salary}`
+      })
 
     g.selectAll("g.circle-group").select("text")
       .append("tspan")
@@ -239,7 +242,10 @@ export const salary = school_type => {
       .ease(d3.easeElastic.period(0.7));
 
     g.selectAll(".salary-info").data(data)
-      .text(d => `$${d[xColumn]}`)
+      .text(d => {
+        let salary = Math.round(d[xColumn]);
+        return `$${salary}`;
+      })
   }
 
   d3.csv("./data/master_filtered.csv", render)

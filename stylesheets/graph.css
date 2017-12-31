@@ -111,7 +111,7 @@ button {
 
 .info {
 	height: 30px;
-	cursor: default;
+	cursor: pointer;
 }
 
 .clicked {
@@ -120,6 +120,10 @@ button {
 
 .hidden {
 	display: none;
+}
+
+.circle-group {
+	cursor: pointer;
 }
 
 #europe {
