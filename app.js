@@ -7,28 +7,14 @@ import {
   readingScore,
   score,
   salary,
-  updateRegion
+  updateRegion,
+  toggleSelectedBtn
 } from "./graph";
 
 initializeGraph();
 // d3.csv("./data/example.csv", rows => {
 //   rows.forEach(d => console.log(`${d.col1} ${d.col2}`));
 // });
-
-const toggleSelectedBtn = (btnId, btnClass) => {
-  let selectedNode = document.getElementById(btnId);
-  let otherNodes = document.getElementsByClassName(btnClass);
-
-  for (let i = 0; i < otherNodes.length; i++) {
-    let currNode = otherNodes[i];
-
-    if (currNode === selectedNode) {
-      currNode.classList.add("selected-btn");
-    } else {
-      currNode.classList.remove("selected-btn");
-    }
-  }
-}
 
 document.getElementById("science").addEventListener("click", () => {
   toggleSelectedBtn("science", "subject-btn");

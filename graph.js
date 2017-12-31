@@ -275,6 +275,21 @@ export const updateRegion = () => {
   d3.csv("./data/master_filtered.csv", render)
 }
 
+export const toggleSelectedBtn = (btnId, btnClass) => {
+  let selectedNode = document.getElementById(btnId);
+  let otherNodes = document.getElementsByClassName(btnClass);
+
+  for (let i = 0; i < otherNodes.length; i++) {
+    let currNode = otherNodes[i];
+
+    if (currNode === selectedNode) {
+      currNode.classList.add("selected-btn");
+    } else {
+      currNode.classList.remove("selected-btn");
+    }
+  }
+}
+
 //TO DOS
 //see how to do something after a transition (for fading out regions and making class hidden)
 //see how to make money displayed as normal with commas
