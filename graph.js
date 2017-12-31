@@ -6,8 +6,8 @@ const margin = { left: 250, top: 70, right: 50, bottom: 100 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
-const rMin = 8;
-const rMax = 12;
+const rMin = 2;
+const rMax = 5;
 let xColumn;
 let yColumn;
 const rColumn = "GDP";
@@ -90,6 +90,10 @@ export const initializeGraph = () => {
     yAxisG.call(yAxis);
 
     //Enter
+    // const toggleRadius = () => {
+    //   const currentRadius = rScale(d)
+    // }
+
     const circleGroups = g.selectAll("g.circle-group").data(data);
     circleGroups.enter().append("g")
       .attr("class", "circle-group")
@@ -97,12 +101,17 @@ export const initializeGraph = () => {
       .attr("transform", d => `translate(0, ${innerHeight})`)
       .on("click", function() {
         let circleGroup = d3.select(this);
-        if (circleGroup.select("circle").property("r") === 100) {
+
+        console.log(circleGroup.select("circle"));
+        console.log(circleGroup.select("circle").attr("class"));
+        if (circleGroup.select("circle").attr("class") === "clicked") {
           console.log('im big');
           circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
           circleGroup.select("text").transition().attr("opacity", 0);
+          circleGroup.select("circle").attr("class", "");
         } else {
           circleGroup.select("circle").transition().attr("r", 100);
+          circleGroup.select("circle").attr("class", "clicked");
           circleGroup.select("text").transition().attr("opacity", 1);
         }
       })

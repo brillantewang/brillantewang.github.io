@@ -114,6 +114,10 @@ button {
 	cursor: default;
 }
 
+.clicked {
+	z-index: 1;
+}
+
 #europe {
   color: #FF983E;
 }

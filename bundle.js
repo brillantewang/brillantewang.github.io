@@ -22759,6 +22759,10 @@ const initializeGraph = () => {
     yAxisG.call(yAxis);
 
     //Enter
+    // const toggleRadius = () => {
+    //   const currentRadius = rScale(d)
+    // }
+
     const circleGroups = g.selectAll("g.circle-group").data(data);
     circleGroups.enter().append("g")
       .attr("class", "circle-group")
@@ -22766,6 +22770,8 @@ const initializeGraph = () => {
       .attr("transform", d => `translate(0, ${innerHeight})`)
       .on("click", function() {
         let circleGroup = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this);
+
+        console.log(circleGroup.select("circle"));
         if (circleGroup.select("circle").property("r") === 100) {
           console.log('im big');
           circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
