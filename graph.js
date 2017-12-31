@@ -123,11 +123,11 @@ export const initializeGraph = () => {
       .attr("r", 0)
       // .attr("opacity", 0.8)
 
-    g.selectAll("circle").data(data)
-      .on('mouseout', function() {
-        d3.select(this).transition().attr("r", d => rScale(d[rColumn]))
-        d3.select(this.parentNode).select("text").transition().attr("opacity", 0);
-      })
+    // g.selectAll("circle").data(data)
+    //   .on('mouseout', function() {
+    //     d3.select(this).transition().attr("r", d => rScale(d[rColumn]))
+    //     d3.select(this.parentNode).select("text").transition().attr("opacity", 0);
+    //   })
 
     //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
