@@ -108,10 +108,12 @@ export const initializeGraph = () => {
           console.log('im big');
           circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
           circleGroup.select("text").transition().attr("opacity", 0);
+          circleGroup.select("text").attr("class", "info hidden");
           circleGroup.select("circle").attr("class", "");
         } else {
           circleGroup.select("circle").transition().attr("r", 100);
           circleGroup.select("circle").attr("class", "clicked");
+          circleGroup.select("text").attr("class", "info");
           circleGroup.select("text").transition().attr("opacity", 1);
         }
       })
@@ -132,7 +134,8 @@ export const initializeGraph = () => {
     //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
       .append("text")
-      .attr("class", "info")
+      .attr("class", "info hidden")
+      // .attr("class", "info")
       .style("text-anchor", "middle")
       .attr("opacity", 0)
 

@@ -118,6 +118,10 @@ button {
 	z-index: 1;
 }
 
+.hidden {
+	display: none;
+}
+
 #europe {
   color: #FF983E;
 }
