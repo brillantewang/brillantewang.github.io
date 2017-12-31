@@ -104,7 +104,8 @@ button {
   position: absolute;
   display: flex;
   flex-direction: column;
-  right: 100px;
+  left: 45px;
+  top: 45px;
   font-size: 20px;
   z-index: 1;
 }
