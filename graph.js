@@ -6,8 +6,8 @@ const margin = { left: 220, top: 120, right: 100, bottom: 100 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
-const rMin = 10;
-const rMax = 15;
+const rMin = 12;
+const rMax = 17;
 let xColumn;
 let yColumn;
 const rColumn = "GDP";
@@ -77,12 +77,6 @@ const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 const xAxis = d3.axisBottom(xScale).ticks(20).tickFormat(d3.format(".0s"));
 const yAxis = d3.axisLeft(yScale).ticks(10);
 
-d3.selection.prototype.moveToFront = function() { // found here https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
-  return this.each(function() {
-    this.parentNode.appendChild(this)
-  })
-}
-
 export const initializeGraph = () => {
   xColumn = "salary_average";
   yColumn = "percentile_average_mean_score";
@@ -112,22 +106,20 @@ export const initializeGraph = () => {
         console.log(circleGroup.select("circle").attr("class"));
         // if (circleGroup.select("circle").attr("class") === "clicked") {
         if (circleGroup.attr("class") === "circle-group clicked") {
-          console.log('im big');
           circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
-          circleGroup.select(".info").transition().attr("opacity", 0);
-          circleGroup.select(".code").transition().attr("opacity", 1);
-          circleGroup.select(".info").attr("class", "info hidden");
-          circleGroup.select(".code").attr("class", "code");
+          circleGroup.select(".info").transition().attr("opacity", 0).on("end", () => circleGroup.select(".info").attr("class", "info hidden"));
+          circleGroup.select(".code").transition().attr("opacity", 1).on("start", () => circleGroup.select(".code").attr("class", "code"));
+          // circleGroup.select(".info").attr("class", "info hidden");
           circleGroup.attr("class", "circle-group");
           // circleGroup.select("circle").attr("class", "");
         } else {
           circleGroup.select("circle").transition().attr("r", 100);
           // circleGroup.select("circle").attr("class", "clicked");
           circleGroup.attr("class", "circle-group clicked");
-          circleGroup.select(".info").attr("class", "info");
-          circleGroup.select(".info").transition().attr("opacity", 1);
-          circleGroup.select(".code").transition().attr("opacity", 0);
-          circleGroup.select(".code").attr("class", "code hidden");
+          // circleGroup.select(".info").attr("class", "info");
+          // circleGroup.select(".info").transition().attr("opacity", 1);
+          circleGroup.select(".info").transition().attr("opacity", 1).on("start", () => circleGroup.select(".info").attr("class", "info"));
+          circleGroup.select(".code").transition().attr("opacity", 0).on("end", () => circleGroup.select(".code").attr("class", "code hidden"));
           circleGroup.raise();
         }
       })
