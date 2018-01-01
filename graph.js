@@ -111,6 +111,7 @@ export const initializeGraph = () => {
           circleGroup.select(".code").transition().attr("opacity", 1).on("start", () => circleGroup.select(".code").attr("class", "code"));
           // circleGroup.select(".info").attr("class", "info hidden");
           circleGroup.attr("class", "circle-group");
+          circleGroup.transition().attr("opacity", 0.8);
           // circleGroup.select("circle").attr("class", "");
         } else {
           circleGroup.select("circle").transition().attr("r", 100);
@@ -120,6 +121,7 @@ export const initializeGraph = () => {
           // circleGroup.select(".info").transition().attr("opacity", 1);
           circleGroup.select(".info").transition().attr("opacity", 1).on("start", () => circleGroup.select(".info").attr("class", "info"));
           circleGroup.select(".code").transition().attr("opacity", 0).on("end", () => circleGroup.select(".code").attr("class", "code hidden"));
+          circleGroup.transition().attr("opacity", 0.9);
           circleGroup.raise();
         }
       })
