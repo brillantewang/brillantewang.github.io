@@ -168,7 +168,7 @@ export const initializeGraph = () => {
       .attr("x", 0)
       .attr("dy", "1.2em")
       .text(d => {
-        let salary = Math.round(d[xColumn]);
+        let salary = Math.round(d[xColumn]).toLocaleString();
         return `$${salary}`
       })
 
@@ -263,7 +263,7 @@ export const salary = school_type => {
 
     g.selectAll(".salary-info").data(data, d => d.country_name)
       .text(d => {
-        let salary = Math.round(d[xColumn]);
+        let salary = Math.round(d[xColumn]).toLocaleString();
         return `$${salary}`;
       })
   }
