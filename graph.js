@@ -289,11 +289,11 @@ export const updateRegion = () => {
       .duration(500)
       .on("start", function(d) {
         let circleGroup = d3.select(this);
-        if (checkedRegions.includes(d.region)) circleGroup.attr("class", "circle-group");
+        if (checkedRegions.includes(d.region)) circleGroup.classed("hidden", false);
       })
       .on("end", function(d) {
         let circleGroup = d3.select(this);
-        if (!checkedRegions.includes(d.region)) circleGroup.attr("class", "circle-group hidden");
+        if (!checkedRegions.includes(d.region)) circleGroup.classed("hidden", true);
       })
       // .attr("class", d => checkedRegions.includes(d.region) ? "circle-group" : "circle-group hidden")
       // see how to do something after a transition
