@@ -6,8 +6,8 @@ const margin = { left: 220, top: 120, right: 100, bottom: 100 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
-const rMin = 4;
-const rMax = 9;
+const rMin = 8;
+const rMax = 14;
 let xColumn;
 let yColumn;
 const rColumn = "GDP";
@@ -232,7 +232,7 @@ export const score = subject => {
       .duration(2000)
       .ease(d3.easeElastic.period(0.7));
 
-    g.selectAll(".score-info").data(data)
+    g.selectAll(".score-info").data(data, d => d.country_name)
       .text(d => `${d[yColumn]}%`)
   }
 
@@ -251,7 +251,7 @@ export const salary = school_type => {
       .duration(2000)
       .ease(d3.easeElastic.period(0.7));
 
-    g.selectAll(".salary-info").data(data)
+    g.selectAll(".salary-info").data(data, d => d.country_name)
       .text(d => {
         let salary = Math.round(d[xColumn]);
         return `$${salary}`;
@@ -272,7 +272,7 @@ export const updateRegion = () => {
   });
 
   const render = data => {
-    g.selectAll(".circle-group").data(data).transition()
+    g.selectAll(".circle-group").data(data, d => d.country_name).transition()
       .attr("opacity", d => checkedRegions.includes(d.region) ? 0.8 : 0)
       .duration(500)
       .on("start", function(d) {
