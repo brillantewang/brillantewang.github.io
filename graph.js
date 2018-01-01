@@ -77,7 +77,7 @@ const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 const xAxis = d3.axisBottom(xScale).ticks(20).tickFormat(d3.format(".0s"));
 const yAxis = d3.axisLeft(yScale).ticks(10);
 
-d3.selection.prototype.moveToFront = function() {
+d3.selection.prototype.moveToFront = function() { // found here https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
   return this.each(function() {
     this.parentNode.appendChild(this)
   })
@@ -124,7 +124,7 @@ export const initializeGraph = () => {
           circleGroup.attr("class", "circle-group clicked");
           circleGroup.select("text").attr("class", "info");
           circleGroup.select("text").transition().attr("opacity", 1);
-          circleGroup.moveToFront();
+          circleGroup.raise();
         }
       })
       // .on('mouseout', function() {
@@ -226,7 +226,7 @@ export const score = subject => {
   const render = data => {
     yScale.domain(d3.extent(data, d => d[yColumn]));
 
-    g.selectAll("g.circle-group").data(data).transition()
+    g.selectAll("g.circle-group").data(data, d => d.country_name).transition()
       .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
       // .attr("cy", d => yScale(d[yColumn]))
       .duration(2000)
@@ -245,7 +245,7 @@ export const salary = school_type => {
   const render = data => {
     xScale.domain(d3.extent(data, d => d[xColumn]));
 
-    g.selectAll("g.circle-group").data(data).transition()
+    g.selectAll("g.circle-group").data(data, d => d.country_name).transition()
       .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
       // .attr("cx", d => xScale(d[xColumn]))
       .duration(2000)
