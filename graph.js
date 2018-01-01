@@ -16,12 +16,12 @@ const colorColumn = "region";
 const xAxisLabelText = "Annual Teacher Salary in USD (converted using PPP)";
 const xAxisLabelOffset = 75;
 
-const yAxisLabelText = "Score Percentile";
+const yAxisLabelText = "Percentile Ranking";
 const yAxisLabelOffset = 50;
 
-const svgContainer = d3.select("body").insert("div", ".school-type-btns").attr("class", "svg-container");
+const svgContainer = d3.select("body").insert("div", ".school-type-btns-container").attr("class", "svg-container");
 
-const svg = d3.select(".svg-container").insert("svg", ".school-type-btns")
+const svg = d3.select(".svg-container").insert("svg", ".school-type-btns-container")
   .attr("width", outerWidth)
   .attr("height", outerHeight)
 
@@ -316,8 +316,3 @@ export const toggleSelectedBtn = (btnId, btnClass) => {
     }
   }
 }
-
-//TO DOS
-//see how to do something after a transition (for fading out regions and making class hidden)
-//see how to make money displayed as normal with commas
-//see how to make clicked bubbles go to front

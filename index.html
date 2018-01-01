@@ -13,6 +13,12 @@
       <!-- <strong>Click a country bubble for specific info.</strong> -->
     </div>
     <div class="subject-btns">
+      <div class="help-tip subjects-tip">
+        <p>
+          This axis represents the percentile ranking of a country's mean score on the Programme for International Student Assessment (PISA) in 2015.
+          <br><br>For example, Poland's mean score on the science PISA was higher than 61% of all other countries.
+        </p>
+      </div>
       <button class="subject-btn selected-btn" id="average">Overall</button>
       <button class="subject-btn" id="science">Science</button>
       <button class="subject-btn" id="math">Math</button>
@@ -42,11 +48,19 @@
       </fieldset>
     </div>
 
-    <div class="school-type-btns">
-      <button class="school-type-btn selected-btn" id="average-salary">Average</button>
-      <button class="school-type-btn" id="primary">Primary</button>
-      <button class="school-type-btn" id="lower-secondary">Lower Secondary</button>
-      <button class="school-type-btn" id="upper-secondary">Upper Secondary</button>
+    <div class="school-type-btns-container">
+      <div class="school-type-btns">
+        <button class="school-type-btn selected-btn" id="average-salary">Average</button>
+        <button class="school-type-btn" id="primary">Primary</button>
+        <button class="school-type-btn" id="lower-secondary">Lower Secondary</button>
+        <button class="school-type-btn" id="upper-secondary">Upper Secondary</button>
+        <div class="help-tip school-types-tip">
+          <p>
+            This axis represents a country's annual teacher salary in 2015 converted to US dollars using purchasing power parity to account for cost of living.
+            <br><br>For example, Poland's lower secondary school teachers had a mean salary equivalent to earning $25,375 in the US.
+          </p>
+        </div>
+      </div>
     </div>
     <script src="bundle.js"></script>
   </body>
