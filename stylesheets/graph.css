@@ -56,19 +56,27 @@ button {
 
 .help-tip {
     position: absolute;
-    text-align: center;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
     background-color: #BCDBEA;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     font-size: 14px;
     line-height: 26px;
     cursor: default;
 }
 
 .subjects-tip {
-	right: -75px;
-	top: -36px;
+	right: -73px;
+	top: -30px;
+}
+
+.header-tip {
+	right: 110px;
+	top: 18px;
 }
 
 .school-types-tip {
@@ -106,13 +114,31 @@ button {
 
 .subjects-tip p{
 	top: 30px;
+	left: -2px;
 }
 
 .school-types-tip p{
 	bottom: 30px;
+	left: -2px;
+}
+
+.header-tip p{
+	top: 30px;
+	left: -2px;
 }
 
 .subjects-tip p:after{ /* The pointer of the tooltip */
+    position: absolute;
+    content: '';
+    width:0;
+    height: 0;
+    border:6px solid transparent;
+    border-bottom-color:#1E2021;
+    left:7px;
+    top:-12px;
+}
+
+.header-tip p:after{ /* The pointer of the tooltip */
     position: absolute;
     content: '';
     width:0;
@@ -189,7 +215,7 @@ button {
   flex-direction: column;
   align-items: flex-start;
   position: absolute;
-  top: 330px;
+  top: 340px;
   margin-left: 40px;
   z-index: 1;
 }
@@ -215,11 +241,14 @@ button {
 }
 
 .main-header {
-	/* position: absolute;
-	left: 50%;
-	top: 10%; */
-	margin-bottom: -50px;
-	margin-top: 30px;
+	position: absolute;
+	left: 540px;
+	/* margin-bottom: -50px; */
+	margin-top: 20px;
+}
+
+.sub-header {
+	position: relative;
 }
 
 .regions-checkboxes {
