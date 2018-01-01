@@ -165,7 +165,7 @@ export const initializeGraph = () => {
     g.selectAll("g.circle-group").select(".info")
       .append("tspan")
       .attr("class", "salary-info")
-      .attr("x", 0)
+      .attr("x", -2)
       .attr("dy", "1.2em")
       .text(d => {
         let salary = Math.round(d[xColumn]).toLocaleString();
