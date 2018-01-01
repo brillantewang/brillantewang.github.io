@@ -77,6 +77,12 @@ const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 const xAxis = d3.axisBottom(xScale).ticks(20).tickFormat(d3.format(".0s"));
 const yAxis = d3.axisLeft(yScale).ticks(10);
 
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function() {
+    this.parentNode.appendChild(this)
+  })
+}
+
 export const initializeGraph = () => {
   xColumn = "salary_average";
   yColumn = "percentile_average_mean_score";
@@ -118,6 +124,7 @@ export const initializeGraph = () => {
           circleGroup.attr("class", "circle-group clicked");
           circleGroup.select("text").attr("class", "info");
           circleGroup.select("text").transition().attr("opacity", 1);
+          circleGroup.moveToFront();
         }
       })
       // .on('mouseout', function() {
