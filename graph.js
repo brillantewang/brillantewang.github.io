@@ -6,8 +6,8 @@ const margin = { left: 220, top: 120, right: 100, bottom: 100 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
-const rMin = 8;
-const rMax = 14;
+const rMin = 10;
+const rMax = 15;
 let xColumn;
 let yColumn;
 const rColumn = "GDP";
@@ -114,16 +114,20 @@ export const initializeGraph = () => {
         if (circleGroup.attr("class") === "circle-group clicked") {
           console.log('im big');
           circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
-          circleGroup.select("text").transition().attr("opacity", 0);
-          circleGroup.select("text").attr("class", "info hidden");
+          circleGroup.select(".info").transition().attr("opacity", 0);
+          circleGroup.select(".code").transition().attr("opacity", 1);
+          circleGroup.select(".info").attr("class", "info hidden");
+          circleGroup.select(".code").attr("class", "code");
           circleGroup.attr("class", "circle-group");
           // circleGroup.select("circle").attr("class", "");
         } else {
           circleGroup.select("circle").transition().attr("r", 100);
           // circleGroup.select("circle").attr("class", "clicked");
           circleGroup.attr("class", "circle-group clicked");
-          circleGroup.select("text").attr("class", "info");
-          circleGroup.select("text").transition().attr("opacity", 1);
+          circleGroup.select(".info").attr("class", "info");
+          circleGroup.select(".info").transition().attr("opacity", 1);
+          circleGroup.select(".code").transition().attr("opacity", 0);
+          circleGroup.select(".code").attr("class", "code hidden");
           circleGroup.raise();
         }
       })
@@ -144,19 +148,29 @@ export const initializeGraph = () => {
     //adding text to circle groups
     g.selectAll("g.circle-group").data(data)
       .append("text")
+      .attr("class", "code")
+      .attr("dy", "6px")
+      .style("text-anchor", "middle")
+      .attr("opacity", 0)
+
+    g.selectAll("g.circle-group").select(".code")
+      .text(d => d.country_code)
+
+    g.selectAll("g.circle-group").data(data)
+      .append("text")
       .attr("class", "info hidden")
       // .attr("class", "info")
       .style("text-anchor", "middle")
       .attr("opacity", 0)
 
-    g.selectAll("g.circle-group").select("text")
+    g.selectAll("g.circle-group").select(".info")
       .append("tspan")
       .attr("x", 0)
       .attr("dy", "-10px")
       .text(d => d.country_name)
       .style("font-size", "24px")
 
-    g.selectAll("g.circle-group").select("text")
+    g.selectAll("g.circle-group").select(".info")
       .append("tspan")
       .attr("class", "salary-info")
       .attr("x", 0)
@@ -166,7 +180,7 @@ export const initializeGraph = () => {
         return `$${salary}`
       })
 
-    g.selectAll("g.circle-group").select("text")
+    g.selectAll("g.circle-group").select(".info")
       .append("tspan")
       .attr("class", "score-info")
       .attr("x", 0)
@@ -201,6 +215,10 @@ export const initializeGraph = () => {
     g.selectAll("circle").data(data).transition()
       .attr("r", d => rScale(d[rColumn]))
       .attr("fill", d => colorScale(d[colorColumn]))
+      .delay((d, i) => i * 100)
+
+    g.selectAll(".code").transition()
+      .attr("opacity", 1)
       .delay((d, i) => i * 100)
 
     // circles
