@@ -268,6 +268,14 @@ export const updateRegion = () => {
     g.selectAll(".circle-group").data(data).transition()
       .attr("opacity", d => checkedRegions.includes(d.region) ? 0.8 : 0)
       .duration(500)
+      .on("start", function(d) {
+        let circleGroup = d3.select(this);
+        if (checkedRegions.includes(d.region)) circleGroup.attr("class", "circle-group");
+      })
+      .on("end", function(d) {
+        let circleGroup = d3.select(this);
+        if (!checkedRegions.includes(d.region)) circleGroup.attr("class", "circle-group hidden");
+      })
       // .attr("class", d => checkedRegions.includes(d.region) ? "circle-group" : "circle-group hidden")
       // see how to do something after a transition
   }
