@@ -21,7 +21,7 @@ const yAxisLabelOffset = 50;
 
 const svgContainer = d3.select("body").insert("div", ".school-type-btns-container").attr("class", "svg-container");
 
-const svg = d3.select(".svg-container").insert("svg", ".school-type-btns-container")
+const svg = d3.select(".svg-container").append("svg")
   .attr("width", outerWidth)
   .attr("height", outerHeight)
 
