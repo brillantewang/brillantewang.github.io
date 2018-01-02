@@ -61,6 +61,7 @@ a {
 .help-tip {
     position: absolute;
 		z-index: 1;
+		/* text-align: center; */
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -68,14 +69,14 @@ a {
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 26px;
     cursor: default;
 }
 
 .subjects-tip {
 	right: -73px;
-	top: -30px;
+	top: -28px;
 }
 
 .header-tip {
