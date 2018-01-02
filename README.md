@@ -4,7 +4,7 @@ A visual analysis on teacher salary to student outcomes across the world. Link [
 ## Background and Overview
 As a former teacher, I had heard at some point that countries that paid their teachers the highest salaries also had the best overall education systems, which implied best student achievement.
 
-To determine if this was true, I decided to analyze data provided by the Organization for Economic Cooperation and Development (OECD) and build [TeacherPay](https://brillantewang.github.io/teacherpay/), a simple visual tool that shows the relationship between teacher pay and student outcomes in science, math, and reading across the 35 countries that are members of the OECD.
+To determine if this was true, I decided to analyze data provided by the Organization for Economic Cooperation and Development (OECD) and build [TeacherPay](https://brillantewang.github.io/teacherpay/), a simple visual tool that shows the relationship between teacher pay and student outcomes in science, math, and reading across 35 countries. These countries are either members or partners of the OECD and were selected to part of this analysis for having complete data across all fields of interest.
 
 Users are presented with a scatterplot with teacher salaries on the X axis and student outcomes on the Y axis. To break down what these components mean:
 
