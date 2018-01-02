@@ -102,8 +102,6 @@ export const initializeGraph = () => {
       .on("click", function() {
         let circleGroup = d3.select(this);
 
-        console.log(circleGroup.select("circle"));
-        console.log(circleGroup.select("circle").attr("class"));
         // if (circleGroup.select("circle").attr("class") === "clicked") {
         if (circleGroup.attr("class") === "circle-group clicked") {
           circleGroup.select("circle").transition().attr("r", d => rScale(d[rColumn]))
@@ -220,7 +218,7 @@ export const initializeGraph = () => {
     //   .attr("cy", function(d){ return yScale(d.score); })
 
     //Exit
-    circles.exit().remove();
+    circleGroups.exit().remove();
   }
 
   // const type = d => {
