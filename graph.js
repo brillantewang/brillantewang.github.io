@@ -70,9 +70,9 @@ const yAxisLabel = yAxisG.append("text")
   .attr("class", "label")
   .text(yAxisLabelText);
 
-const xScale = d3.scaleLog().range([innerWidth, 0]);
-const yScale = d3.scaleLinear().range([innerHeight, 0]);
-const rScale = d3.scaleSqrt().range([rMin, rMax]);
+const xScale = d3.scaleLog().rangeRound([innerWidth, 0]);
+const yScale = d3.scaleLinear().rangeRound([innerHeight, 0]);
+const rScale = d3.scaleSqrt().rangeRound([rMin, rMax]);
 const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 const xAxis = d3.axisBottom(xScale).ticks(20).tickFormat(d3.format(".0s"));
 const yAxis = d3.axisLeft(yScale).ticks(10);
@@ -234,7 +234,7 @@ export const score = subject => {
   yColumn = `percentile_${subject}_mean_score`;
 
   const render = data => {
-    yScale.domain(d3.extent(data, d => d[yColumn]));
+    // yScale.domain(d3.extent(data, d => d[yColumn]));
 
     g.selectAll("g.circle-group").data(data, d => d.country_name).transition()
       .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
@@ -253,7 +253,7 @@ export const salary = school_type => {
   xColumn = `salary_${school_type}`;
 
   const render = data => {
-    xScale.domain(d3.extent(data, d => d[xColumn]));
+    // xScale.domain(d3.extent(data, d => d[xColumn]));
 
     g.selectAll("g.circle-group").data(data, d => d.country_name).transition()
       .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)

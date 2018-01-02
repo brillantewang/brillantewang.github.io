@@ -22748,9 +22748,9 @@ const yAxisLabel = yAxisG.append("text")
   .attr("class", "label")
   .text(yAxisLabelText);
 
-const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* scaleLog */]().range([innerWidth, 0]);
-const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleLinear */]().range([innerHeight, 0]);
-const rScale = __WEBPACK_IMPORTED_MODULE_0_d3__["k" /* scaleSqrt */]().range([rMin, rMax]);
+const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* scaleLog */]().rangeRound([innerWidth, 0]);
+const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleLinear */]().rangeRound([innerHeight, 0]);
+const rScale = __WEBPACK_IMPORTED_MODULE_0_d3__["k" /* scaleSqrt */]().rangeRound([rMin, rMax]);
 const colorScale = __WEBPACK_IMPORTED_MODULE_0_d3__["j" /* scaleOrdinal */](__WEBPACK_IMPORTED_MODULE_0_d3__["l" /* schemeCategory10 */]);
 const xAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* axisBottom */](xScale).ticks(20).tickFormat(__WEBPACK_IMPORTED_MODULE_0_d3__["f" /* format */](".0s"));
 const yAxis = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* axisLeft */](yScale).ticks(10);
@@ -22914,7 +22914,7 @@ const score = subject => {
   yColumn = `percentile_${subject}_mean_score`;
 
   const render = data => {
-    yScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[yColumn]));
+    // yScale.domain(d3.extent(data, d => d[yColumn]));
 
     g.selectAll("g.circle-group").data(data, d => d.country_name).transition()
       .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
@@ -22935,7 +22935,7 @@ const salary = school_type => {
   xColumn = `salary_${school_type}`;
 
   const render = data => {
-    xScale.domain(__WEBPACK_IMPORTED_MODULE_0_d3__["e" /* extent */](data, d => d[xColumn]));
+    // xScale.domain(d3.extent(data, d => d[xColumn]));
 
     g.selectAll("g.circle-group").data(data, d => d.country_name).transition()
       .attr("transform", d => `translate(${xScale(d[xColumn])}, ${yScale(d[yColumn])})`)
