@@ -54,6 +54,10 @@ button {
 	border: 1px solid #d3d3d3;
 }
 
+a {
+	color: white;
+}
+
 .help-tip {
     position: absolute;
 		z-index: 1;
