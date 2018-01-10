@@ -123,6 +123,21 @@ export const initializeGraph = () => {
           circleGroup.raise();
         }
       })
+      .on('mouseover', function() {
+        let circleGroup = d3.select(this);
+        let circle = circleGroup.select("circle");
+        console.log(circleGroup.attr("class"));
+        if (!circleGroup.attr("class").includes("clicked")) circle.transition().attr("r", d => rScale(d[rColumn]) + 10)
+      })
+      .on('mouseout', function() {
+        let circleGroup = d3.select(this);
+        let circle = circleGroup.select("circle");
+        console.log(circleGroup.attr("class"));
+        if (!circleGroup.attr("class").includes("clicked")) circle.transition().attr("r", d => rScale(d[rColumn]))
+      })
+      // .on('mouseout', function() {
+      //   d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
+      // })
       // .on('mouseout', function() {
       //   d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
       //   d3.select(this).select("text").transition().attr("opacity", 0);
@@ -132,9 +147,11 @@ export const initializeGraph = () => {
       // .attr("opacity", 0.8)
 
     // g.selectAll("circle").data(data)
+    //   .on('mouseover', function() {
+    //     d3.select(this).transition().attr("r", d => rScale(d[rColumn]) * 1.05)
+    //   })
     //   .on('mouseout', function() {
     //     d3.select(this).transition().attr("r", d => rScale(d[rColumn]))
-    //     d3.select(this.parentNode).select("text").transition().attr("opacity", 0);
     //   })
 
     //adding text to circle groups
