@@ -25,19 +25,6 @@ const svg = d3.select(".svg-container").append("svg")
   .attr("width", outerWidth)
   .attr("height", outerHeight)
 
-// const tip = d3.select('.svg-container').append('div')
-//   .attr('class', 'tip')
-//   .html('I am a tooltip...')
-//   .style('border', '1px solid black')
-//   .style('position', 'absolute')
-//   .style('display', 'none')
-//   .on('mouseover', d => {
-//     tip.transition().duration(0)
-//   })
-//   .on('mouseout', d => {
-//     tip.style('display', 'none')
-//   })
-
 const g = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -51,15 +38,6 @@ const xAxisLabel = xAxisG.append("text")
   .attr("y", xAxisLabelOffset)
   .attr("class", "label")
   .text(xAxisLabelText);
-
-// const xAxisButtons = xAxisG.append("div")
-//   .attr("class", "subject-btns");
-//
-// xAxisButtons
-//   .append("button")
-//   .attr("class", "subject-btn")
-//   .attr("id", "average")
-//   .html("average")
 
 const yAxisG = g.append("g")
   .attr("class", "y axis");
@@ -90,10 +68,6 @@ export const initializeGraph = () => {
     yAxisG.call(yAxis);
 
     //Enter
-    // const toggleRadius = () => {
-    //   const currentRadius = rScale(d)
-    // }
-
     const circleGroups = g.selectAll("g.circle-group").data(data);
     circleGroups.enter().append("g")
       .attr("class", "circle-group")
@@ -124,6 +98,7 @@ export const initializeGraph = () => {
         }
       })
       .on('mouseover', function() {
+        console.log('yo');
         let circleGroup = d3.select(this);
         let circle = circleGroup.select("circle");
         console.log(circleGroup.attr("class"));

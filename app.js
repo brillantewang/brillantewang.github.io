@@ -12,9 +12,6 @@ import {
 } from "./graph";
 
 initializeGraph();
-// d3.csv("./data/example.csv", rows => {
-//   rows.forEach(d => console.log(`${d.col1} ${d.col2}`));
-// });
 
 document.getElementById("science").addEventListener("click", () => {
   toggleSelectedBtn("science", "subject-btn");
