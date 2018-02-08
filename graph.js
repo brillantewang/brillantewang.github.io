@@ -100,7 +100,7 @@ export const initializeGraph = () => {
       .on('mouseenter', function() {
         let circleGroup = d3.select(this);
         let circle = circleGroup.select("circle");
-        console.log(circleGroup.attr("class"), 'mouseeneter');
+        console.log(circleGroup.attr("class"), 'mouseenter');
         if (!circleGroup.attr("class").includes("clicked")) circle.transition().attr("r", d => rScale(d[rColumn]) + 10)
       })
       .on('mouseleave', function() {
