@@ -97,17 +97,16 @@ export const initializeGraph = () => {
           circleGroup.raise();
         }
       })
-      .on('mouseover', function() {
-        console.log('yo');
+      .on('mouseenter', function() {
         let circleGroup = d3.select(this);
         let circle = circleGroup.select("circle");
-        console.log(circleGroup.attr("class"));
+        console.log(circleGroup.attr("class"), 'mouseeneter');
         if (!circleGroup.attr("class").includes("clicked")) circle.transition().attr("r", d => rScale(d[rColumn]) + 10)
       })
-      .on('mouseout', function() {
+      .on('mouseleave', function() {
         let circleGroup = d3.select(this);
         let circle = circleGroup.select("circle");
-        console.log(circleGroup.attr("class"));
+        console.log(circleGroup.attr("class"), 'mouseeout');
         if (!circleGroup.attr("class").includes("clicked")) circle.transition().attr("r", d => rScale(d[rColumn]))
       })
       // .on('mouseout', function() {
