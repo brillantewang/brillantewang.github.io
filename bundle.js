@@ -9546,9 +9546,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 Object(__WEBPACK_IMPORTED_MODULE_1__graph__["a" /* initializeGraph */])();
-// d3.csv("./data/example.csv", rows => {
-//   rows.forEach(d => console.log(`${d.col1} ${d.col2}`));
-// });
 
 document.getElementById("science").addEventListener("click", () => {
   Object(__WEBPACK_IMPORTED_MODULE_1__graph__["d" /* toggleSelectedBtn */])("science", "subject-btn");
@@ -22676,6 +22673,9 @@ function nopropagation() {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ordinal__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ordinal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ordinal__);
+
 
 
 const outerWidth = 1400;
@@ -22703,19 +22703,6 @@ const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](".svg-container")
   .attr("width", outerWidth)
   .attr("height", outerHeight)
 
-// const tip = d3.select('.svg-container').append('div')
-//   .attr('class', 'tip')
-//   .html('I am a tooltip...')
-//   .style('border', '1px solid black')
-//   .style('position', 'absolute')
-//   .style('display', 'none')
-//   .on('mouseover', d => {
-//     tip.transition().duration(0)
-//   })
-//   .on('mouseout', d => {
-//     tip.style('display', 'none')
-//   })
-
 const g = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -22729,15 +22716,6 @@ const xAxisLabel = xAxisG.append("text")
   .attr("y", xAxisLabelOffset)
   .attr("class", "label")
   .text(xAxisLabelText);
-
-// const xAxisButtons = xAxisG.append("div")
-//   .attr("class", "subject-btns");
-//
-// xAxisButtons
-//   .append("button")
-//   .attr("class", "subject-btn")
-//   .attr("id", "average")
-//   .html("average")
 
 const yAxisG = g.append("g")
   .attr("class", "y axis");
@@ -22768,10 +22746,6 @@ const initializeGraph = () => {
     yAxisG.call(yAxis);
 
     //Enter
-    // const toggleRadius = () => {
-    //   const currentRadius = rScale(d)
-    // }
-
     const circleGroups = g.selectAll("g.circle-group").data(data);
     circleGroups.enter().append("g")
       .attr("class", "circle-group")
@@ -22801,6 +22775,21 @@ const initializeGraph = () => {
           circleGroup.raise();
         }
       })
+      .on('mouseenter', function() {
+        let circleGroup = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this);
+        let circle = circleGroup.select("circle");
+        // console.log(circleGroup.attr("class"), 'mouseenter');
+        if (!circleGroup.attr("class").includes("clicked")) circle.transition().attr("r", d => rScale(d[rColumn]) + 10)
+      })
+      .on('mouseleave', function() {
+        let circleGroup = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */](this);
+        let circle = circleGroup.select("circle");
+        // console.log(circleGroup.attr("class"), 'mouseleave');
+        if (!circleGroup.attr("class").includes("clicked")) circle.transition().attr("r", d => rScale(d[rColumn]))
+      })
+      // .on('mouseout', function() {
+      //   d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
+      // })
       // .on('mouseout', function() {
       //   d3.select(this).select("circle").transition().attr("r", d => rScale(d[rColumn]))
       //   d3.select(this).select("text").transition().attr("opacity", 0);
@@ -22810,9 +22799,11 @@ const initializeGraph = () => {
       // .attr("opacity", 0.8)
 
     // g.selectAll("circle").data(data)
+    //   .on('mouseover', function() {
+    //     d3.select(this).transition().attr("r", d => rScale(d[rColumn]) * 1.05)
+    //   })
     //   .on('mouseout', function() {
     //     d3.select(this).transition().attr("r", d => rScale(d[rColumn]))
-    //     d3.select(this.parentNode).select("text").transition().attr("opacity", 0);
     //   })
 
     //adding text to circle groups
@@ -22855,7 +22846,7 @@ const initializeGraph = () => {
       .attr("class", "score-info")
       .attr("x", 0)
       .attr("dy", "1.2em")
-      .text(d => `${d[yColumn]}%`)
+      .text(d => `${__WEBPACK_IMPORTED_MODULE_1_ordinal___default()(parseInt(d[yColumn]))} percentile`)
 
     //Update
     // g.selectAll("g.circle-group").data(data)
@@ -22923,7 +22914,7 @@ const score = subject => {
       .ease(__WEBPACK_IMPORTED_MODULE_0_d3__["d" /* easeElastic */].period(0.7));
 
     g.selectAll(".score-info").data(data, d => d.country_name)
-      .text(d => `${d[yColumn]}%`)
+      .text(d => `${__WEBPACK_IMPORTED_MODULE_1_ordinal___default()(parseInt(d[yColumn]))} percentile`)
   }
 
   __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* csv */]("./data/master_filtered.csv", render)
@@ -23002,6 +22993,36 @@ const toggleSelectedBtn = (btnId, btnClass) => {
 }
 /* harmony export (immutable) */ __webpack_exports__["d"] = toggleSelectedBtn;
 
+
+
+/***/ }),
+/* 464 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var indicator = __webpack_require__(465)
+
+function ordinal (i) {
+  if (typeof i !== 'number') throw new TypeError('Expected Number, got ' + (typeof i) + ' ' + i)
+  return i + indicator(i)
+}
+
+ordinal.indicator = indicator
+module.exports = ordinal
+
+
+/***/ }),
+/* 465 */
+/***/ (function(module, exports) {
+
+module.exports = function indicator (i) {
+  var cent = i % 100
+  if (cent >= 10 && cent <= 20) return 'th'
+  var dec = i % 10
+  if (dec === 1) return 'st'
+  if (dec === 2) return 'nd'
+  if (dec === 3) return 'rd'
+  return 'th'
+}
 
 
 /***/ })
