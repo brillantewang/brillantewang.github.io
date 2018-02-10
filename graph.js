@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import ordinal from 'ordinal';
 
 const outerWidth = 1400;
 const outerHeight = 720;
@@ -168,7 +169,7 @@ export const initializeGraph = () => {
       .attr("class", "score-info")
       .attr("x", 0)
       .attr("dy", "1.2em")
-      .text(d => `${d[yColumn]}%`)
+      .text(d => `${ordinal(parseInt(d[yColumn]))} percentile`)
 
     //Update
     // g.selectAll("g.circle-group").data(data)
@@ -234,7 +235,7 @@ export const score = subject => {
       .ease(d3.easeElastic.period(0.7));
 
     g.selectAll(".score-info").data(data, d => d.country_name)
-      .text(d => `${d[yColumn]}%`)
+      .text(d => `${ordinal(parseInt(d[yColumn]))} percentile`)
   }
 
   d3.csv("./data/master_filtered.csv", render)
