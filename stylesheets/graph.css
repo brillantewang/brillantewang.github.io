@@ -58,6 +58,10 @@ a {
 	color: white;
 }
 
+.note-text {
+	text-align: center;
+}
+
 .help-tip {
     position: absolute;
 		z-index: 1;
