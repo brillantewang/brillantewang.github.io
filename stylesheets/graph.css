@@ -30,7 +30,7 @@ tspan {
 }
 
 h1 {
-  text-align: center;
+  text-align: left;
   font-size: 40px;
 }
 
@@ -59,7 +59,7 @@ a {
 }
 
 .note-text {
-	text-align: center;
+	text-align: left;
 }
 
 .help-tip {
@@ -84,7 +84,7 @@ a {
 }
 
 .header-tip {
-	right: 110px;
+	right: 250px;
 	top: 18px;
 }
 
@@ -251,7 +251,7 @@ a {
 
 .main-header {
 	position: absolute;
-	left: 540px;
+	left: 50px;
 	/* margin-bottom: -50px; */
 	margin-top: 20px;
 }
@@ -263,11 +263,19 @@ a {
 .regions-checkboxes {
   position: absolute;
   display: flex;
-  flex-direction: column;
-  left: 45px;
-  top: 70px;
+  /* flex-direction: column; */
+  right: 150px;
+  top: 80px;
   font-size: 20px;
   z-index: 1;
+}
+
+.regions-checkboxes fieldset {
+	margin-right: 24px;
+}
+
+.my-checkbox {
+	vertical-align: bottom;
 }
 
 .info {
