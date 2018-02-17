@@ -22727,7 +22727,7 @@ const yAxisLabel = yAxisG.append("text")
   .text(yAxisLabelText);
 
 const yAxisHelpTipGroup = yAxisG.append("g")
-  .attr("transform", `translate(-${yAxisLabelOffset}, 0)`)
+  .attr("transform", `translate(-${yAxisLabelOffset + 5}, 75)`)
   .on("mouseover", () => yAxisHelpTipText.style("display", "block"))
   .on("mousemove", () => yAxisHelpTipText.style("top", `${event.pageY-10}px`).style("left", `${event.pageX+10}px`))
   .on("mouseout", () => yAxisHelpTipText.style("display", "none"))
@@ -22742,8 +22742,7 @@ const yAxisHelpTipQuestionMark = yAxisHelpTipGroup.append("text")
   .style("text-anchor", "middle")
   .text("?")
   .attr("fill", "white")
-  .attr("font-size", "15px")
-  // .attr("opacity", 0)
+  .attr("class", "question-mark")
 
 const yAxisHelpTipText = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").append("p")
   .attr("class", "help-tip-text")
