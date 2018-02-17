@@ -54,6 +54,12 @@ const yAxisHelpTip = yAxisG.append("circle")
   .attr("fill", "blue")
   .attr("class", "help-tip subjects-tip")
   .attr("transform", `translate(-${yAxisLabelOffset}, 0)`)
+  .on("mouseover", () => yAxisHelpTipText.style("display", "block"))
+
+const yAxisHelpTipText = d3.select("body").append("p")
+  .attr("class", "help-tip-text")
+  .style("display", "none")
+  .text("This axis represents the percentile ranking of a country's mean score on the 2015 Programme for International Student Assessment (PISA). You can filter by math, science, or reading scores. For example, Poland's mean score on the science PISA was higher than 61% of all other countries.")
 
 // const yAxisHelpTipText = yAxisHelpTip.append("svg:title")
 //   .text("This axis represents the percentile ranking of a country's mean score on the 2015 Programme for International Student Assessment (PISA). You can filter by math, science, or reading scores. For example, Poland's mean score on the science PISA was higher than 61% of all other countries.")
