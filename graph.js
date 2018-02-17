@@ -40,6 +40,31 @@ const xAxisLabel = xAxisG.append("text")
   .attr("class", "label")
   .text(xAxisLabelText);
 
+const xAxisHelpTipGroup = xAxisG.append("g")
+  // .attr("x", 500)
+  // .attr("y", xAxisLabelOffset)
+  .attr("transform", `translate(775, ${xAxisLabelOffset - 8})`)
+  .on("mouseover", () => xAxisHelpTipText.style("display", "block"))
+  .on("mousemove", () => xAxisHelpTipText.style("top", `${event.pageY-160}px`).style("left", `${event.pageX+10}px`))
+  .on("mouseout", () => xAxisHelpTipText.style("display", "none"))
+
+const xAxisHelpTip = xAxisHelpTipGroup.append("circle")
+  .attr("r", "10px")
+  .attr("fill", "#1c6e8c")
+  .attr("class", "help-tip subjects-tip")
+
+const xAxisHelpTipQuestionMark = xAxisHelpTipGroup.append("text")
+  .attr("dy", "6px")
+  .style("text-anchor", "middle")
+  .text("?")
+  .attr("fill", "white")
+  .attr("class", "question-mark")
+
+const xAxisHelpTipText = d3.select("body").append("p")
+  .attr("class", "help-tip-text")
+  .style("display", "none")
+  .text("This axis represents a country's annual teacher salary in 2015 converted to US dollars using purchasing power parity to account for cost of living. You can filter between primary, lower secondary, and upper secondary school. For example, Poland's lower secondary school teachers had a mean salary equivalent to earning $25,375 in the US.")
+
 const yAxisG = g.append("g")
   .attr("class", "y axis");
 
