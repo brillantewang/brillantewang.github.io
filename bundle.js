@@ -22694,7 +22694,7 @@ const colorColumn = "region";
 const xAxisLabelText = "Annual Teacher Salary in USD (converted using PPP)";
 const xAxisLabelOffset = 75;
 
-const yAxisLabelText = "Percentile Ranking";
+const yAxisLabelText = "Student Test Score Ranking";
 const yAxisLabelOffset = 50;
 
 const svgContainer = __WEBPACK_IMPORTED_MODULE_0_d3__["m" /* select */]("body").insert("div", ".school-type-btns-container").attr("class", "svg-container");
@@ -22725,6 +22725,15 @@ const yAxisLabel = yAxisG.append("text")
   .attr("transform", `translate(-${yAxisLabelOffset}, ${innerHeight / 2}) rotate(-90)`)
   .attr("class", "label")
   .text(yAxisLabelText);
+
+const yAxisHelpTip = yAxisG.append("circle")
+  .attr("r", "10px")
+  .attr("fill", "blue")
+  .attr("class", "help-tip subjects-tip")
+  .attr("transform", `translate(-${yAxisLabelOffset}, 0)`)
+
+// const yAxisHelpTipText = yAxisHelpTip.append("svg:title")
+//   .text("This axis represents the percentile ranking of a country's mean score on the 2015 Programme for International Student Assessment (PISA). You can filter by math, science, or reading scores. For example, Poland's mean score on the science PISA was higher than 61% of all other countries.")
 
 const xScale = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* scaleLog */]().rangeRound([innerWidth, 0]);
 const yScale = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleLinear */]().rangeRound([innerHeight, 0]);
@@ -22873,7 +22882,7 @@ const initializeGraph = () => {
       // .attr("cx", d => xScale(d[xColumn]))
       // .attr("cy", d => yScale(d[yColumn]))
 
-    g.selectAll("circle").data(data).transition()
+    g.selectAll("g.circle-group").select("circle").data(data).transition()
       .attr("r", d => rScale(d[rColumn]))
       .attr("fill", d => colorScale(d[colorColumn]))
       .delay((d, i) => i * 100)

@@ -15,25 +15,23 @@
       <p class="note-text">Note: The size of a country bubble represents its GDP.<p>
       <div class="help-tip header-tip">
         <p>
-          Background: As a former teacher, I had heard at some point that countries that paid their teachers the highest salaries also had the best overall education systems, which implied best student achievement.
+          As a former teacher, I had heard that countries that paid their teachers the highest salaries also had the best education systems.
           <br><br>
-          To determine if this was true, I decided to analyze data provided by the Organization for Economic Cooperation and Development (OECD) and build TeacherPay, a simple visual tool that shows the relationship between teacher salaries and student outcomes in science, math, and reading across 35 countries. You can find more information about this project <a href="https://github.com/brillantewang/teacherpay/blob/master/README.md">here</a>.
-          <br><br>
-          Note: The size of a non-clicked country bubble correlates with its GDP.
+          To see if this was true, I analyzed data provided by the Organization for Economic Cooperation and Development (OECD) to build TeacherPay, a simple tool that shows the relationship between teacher salaries and student outcomes in science, math, and reading across 35 countries. You can find more information about this project <a href="https://github.com/brillantewang/teacherpay/blob/master/README.md">here</a>.
         </p>
       </div>
     </div>
     <div class="subject-btns">
-      <div class="help-tip subjects-tip">
+      <!-- <div class="help-tip subjects-tip">
         <p>
-          This axis represents the percentile ranking of a country's mean score on the Programme for International Student Assessment (PISA) in 2015.
+          This axis represents the percentile ranking of a country's mean score on the 2015 Programme for International Student Assessment (PISA). You can filter by math, science, or reading scores.
           <br><br>For example, Poland's mean score on the science PISA was higher than 61% of all other countries.
         </p>
-      </div>
-      <button class="subject-btn selected-btn" id="average">Overall</button>
+      </div> -->
       <button class="subject-btn" id="science">Science</button>
       <button class="subject-btn" id="math">Math</button>
       <button class="subject-btn" id="reading">Reading</button>
+      <button class="subject-btn selected-btn" id="average">Overall</button>
     </div>
 
     <div class="regions-checkboxes">
@@ -56,13 +54,13 @@
 
     <div class="school-type-btns-container">
       <div class="school-type-btns">
+        <button class="school-type-btn" id="primary">Primary School</button>
+        <button class="school-type-btn" id="lower-secondary">Lower Secondary School</button>
+        <button class="school-type-btn" id="upper-secondary">Upper Secondary School</button>
         <button class="school-type-btn selected-btn" id="average-salary">Average</button>
-        <button class="school-type-btn" id="primary">Primary</button>
-        <button class="school-type-btn" id="lower-secondary">Lower Secondary</button>
-        <button class="school-type-btn" id="upper-secondary">Upper Secondary</button>
         <div class="help-tip school-types-tip">
           <p>
-            This axis represents a country's annual teacher salary in 2015 converted to US dollars using purchasing power parity to account for cost of living.
+            This axis represents a country's annual teacher salary in 2015 converted to US dollars using purchasing power parity to account for cost of living. You can filter between primary, lower secondary, and upper secondary school.
             <br><br>For example, Poland's lower secondary school teachers had a mean salary equivalent to earning $25,375 in the US.
           </p>
         </div>
