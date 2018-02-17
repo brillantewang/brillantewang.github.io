@@ -49,12 +49,24 @@ const yAxisLabel = yAxisG.append("text")
   .attr("class", "label")
   .text(yAxisLabelText);
 
-const yAxisHelpTip = yAxisG.append("circle")
-  .attr("r", "10px")
-  .attr("fill", "blue")
-  .attr("class", "help-tip subjects-tip")
+const yAxisHelpTipGroup = yAxisG.append("g")
   .attr("transform", `translate(-${yAxisLabelOffset}, 0)`)
   .on("mouseover", () => yAxisHelpTipText.style("display", "block"))
+  .on("mousemove", () => yAxisHelpTipText.style("top", `${event.pageY-10}px`).style("left", `${event.pageX+10}px`))
+  .on("mouseout", () => yAxisHelpTipText.style("display", "none"))
+
+const yAxisHelpTip = yAxisHelpTipGroup.append("circle")
+  .attr("r", "10px")
+  .attr("fill", "#1c6e8c")
+  .attr("class", "help-tip subjects-tip")
+
+const yAxisHelpTipQuestionMark = yAxisHelpTipGroup.append("text")
+  .attr("dy", "6px")
+  .style("text-anchor", "middle")
+  .text("?")
+  .attr("fill", "white")
+  .attr("font-size", "15px")
+  // .attr("opacity", 0)
 
 const yAxisHelpTipText = d3.select("body").append("p")
   .attr("class", "help-tip-text")
