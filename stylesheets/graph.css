@@ -271,12 +271,22 @@ a {
   margin-left: 10px;
 }
 
+.header-regions-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
 .main-header {
 	/* position: absolute; */
-	left: 50px;
+	margin-left: 50px;
 	/* margin-bottom: -50px; */
-	margin-top: 20px;
-	display: inline-block;
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.main-header h3 {
+	text-align: left;
 }
 
 .sub-header {
@@ -291,6 +301,8 @@ a {
   /* top: 80px; */
   font-size: 20px;
   z-index: 1;
+	margin-right: 150px;
+	padding-top: 55px;
 }
 
 .regions-checkboxes fieldset {
