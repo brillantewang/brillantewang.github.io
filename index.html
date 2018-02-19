@@ -9,16 +9,35 @@
     <title>TeacherPay</title>
   </head>
   <body>
-    <div class="main-header">
-      <h1>TeacherPay</h1>
-      <h3>A visual analysis of teacher salary to student outcomes across the world</h3>
-      <p class="note-text">Note: The size of a country bubble represents its GDP.<p>
-      <div class="help-tip header-tip">
-        <p>
-          As a former teacher, I had heard that countries that paid their teachers the highest salaries also had the best education systems.
-          <br><br>
-          To see if this was true, I analyzed data provided by the Organization for Economic Cooperation and Development (OECD) to build TeacherPay, a simple tool that shows the relationship between teacher salaries and student outcomes in science, math, and reading across 35 countries. You can find more information about this project <a href="https://github.com/brillantewang/teacherpay/blob/master/README.md">here</a>.
-        </p>
+    <div class="header-regions-container">
+      <div class="main-header">
+        <h1>TeacherPay</h1>
+        <h3>A visual analysis of teacher salary to student outcomes across the world</h3>
+        <p class="note-text">Note: The size of a country bubble represents its GDP.<p>
+        <div class="help-tip header-tip">
+          <p>
+            As a former teacher, I had heard that countries that paid their teachers the highest salaries also had the best education systems.
+            <br><br>
+            To see if this was true, I analyzed data provided by the Organization for Economic Cooperation and Development (OECD) to build TeacherPay, a simple tool that shows the relationship between teacher salaries and student outcomes in science, math, and reading across 35 countries. You can find more information about this project <a href="https://github.com/brillantewang/teacherpay/blob/master/README.md">here</a>.
+          </p>
+        </div>
+      </div>
+      <div class="regions-checkboxes">
+        <fieldset id="europe">
+          <label><input type="checkbox" class="my-checkbox" value="Europe" checked/>Europe</label>
+        </fieldset>
+        <fieldset id="asia">
+          <label><input type="checkbox" class="my-checkbox" value="Asia" checked/>Asia</label>
+        </fieldset>
+        <fieldset id="north-america">
+          <label><input type="checkbox" class="my-checkbox" value="North America" checked/>North America</label>
+        </fieldset>
+        <fieldset id="latin-america">
+          <label><input type="checkbox" class="my-checkbox" value="Latin America" checked/>Latin America</label>
+        </fieldset>
+        <fieldset id="oceania">
+          <label><input type="checkbox" class="my-checkbox" value="Oceania" checked/>Oceania</label>
+        </fieldset>
       </div>
     </div>
     <div class="subject-btns">
@@ -34,23 +53,6 @@
       <button class="subject-btn selected-btn" id="average">Overall</button>
     </div>
 
-    <div class="regions-checkboxes">
-      <fieldset id="europe">
-        <label><input type="checkbox" class="my-checkbox" value="Europe" checked/>Europe</label>
-      </fieldset>
-      <fieldset id="asia">
-        <label><input type="checkbox" class="my-checkbox" value="Asia" checked/>Asia</label>
-      </fieldset>
-      <fieldset id="north-america">
-        <label><input type="checkbox" class="my-checkbox" value="North America" checked/>North America</label>
-      </fieldset>
-      <fieldset id="latin-america">
-        <label><input type="checkbox" class="my-checkbox" value="Latin America" checked/>Latin America</label>
-      </fieldset>
-      <fieldset id="oceania">
-        <label><input type="checkbox" class="my-checkbox" value="Oceania" checked/>Oceania</label>
-      </fieldset>
-    </div>
 
     <div class="school-type-btns-container">
       <div class="school-type-btns">
