@@ -62,6 +62,11 @@ a {
 	text-align: left;
 }
 
+.title-and-help-tip {
+	display: flex;
+	position: relative;
+}
+
 .help-tip {
     position: absolute;
 		z-index: 1;
