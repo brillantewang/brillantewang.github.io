@@ -69,6 +69,7 @@ a {
 
 .help-tip {
     position: absolute;
+		/* right: -30px; */
 		z-index: 1;
 		/* text-align: center; */
 		display: flex;
@@ -83,20 +84,20 @@ a {
     cursor: default;
 }
 
-.subjects-tip {
+/* .subjects-tip {
 	right: -73px;
 	top: -28px;
-}
+} */
 
 .header-tip {
-	right: 250px;
+	left: 170px;
 	top: 18px;
 }
 
-.school-types-tip {
+/* .school-types-tip {
 	right: -60px;
 	top: -47px;
-}
+} */
 
 .question-mark {
 	font-size: 15px;
