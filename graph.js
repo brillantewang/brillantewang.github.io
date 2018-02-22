@@ -75,7 +75,7 @@ const yAxisLabel = yAxisG.append("text")
   .text(yAxisLabelText);
 
 const yAxisHelpTipGroup = yAxisG.append("g")
-  .attr("transform", `translate(-${yAxisLabelOffset + 5}, 75)`)
+  .attr("transform", `translate(-${yAxisLabelOffset + 5}, 85)`)
   .on("mouseover", () => yAxisHelpTipText.style("display", "block"))
   .on("mousemove", () => yAxisHelpTipText.style("top", `${event.pageY - 5}px`).style("left", `${event.pageX + 10}px`))
   .on("mouseout", () => yAxisHelpTipText.style("display", "none"))
