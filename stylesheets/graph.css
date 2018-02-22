@@ -84,20 +84,10 @@ a {
     cursor: default;
 }
 
-/* .subjects-tip {
-	right: -73px;
-	top: -28px;
-} */
-
 .header-tip {
 	left: 170px;
 	top: 18px;
 }
-
-/* .school-types-tip {
-	right: -60px;
-	top: -47px;
-} */
 
 .question-mark {
 	font-size: 15px;
@@ -197,15 +187,6 @@ a {
     bottom:-12px;
 }
 
-.help-tip p:after{ /* Prevents the tooltip from being hidden */
-    /* width:100%;
-    height:40px;
-    content:'';
-    position: absolute;
-    top:-40px;
-    left:0; */
-}
-
 /* CSS animation */
 
 @-webkit-keyframes fadeIn {
@@ -262,9 +243,6 @@ a {
 }
 
 .school-type-btns-container {
-	/* justify-content: center;
-	display: flex; */
-	/* margin-left: 500px; */
 	margin-bottom: 20px;
 }
 
@@ -278,15 +256,15 @@ a {
 }
 
 .header-regions-container {
+	position: absolute;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	margin-top: 20px;
 }
 
 .main-header {
-	/* position: absolute; */
 	margin-left: 50px;
-	/* margin-bottom: -50px; */
 	display: inline-flex;
 	flex-direction: column;
 }
@@ -306,7 +284,7 @@ a {
   /* right: 150px; */
   /* top: 80px; */
   font-size: 20px;
-  z-index: 1;
+  /* z-index: 1; */
 	margin-right: 150px;
 	padding-top: 55px;
 }
