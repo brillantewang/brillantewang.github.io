@@ -45,7 +45,7 @@ const xAxisHelpTipGroup = xAxisG.append("g")
   // .attr("y", xAxisLabelOffset)
   .attr("transform", `translate(775, ${xAxisLabelOffset - 8})`)
   .on("mouseover", () => xAxisHelpTipText.style("display", "block"))
-  .on("mousemove", () => xAxisHelpTipText.style("top", `${event.pageY - 160}px`).style("left", `${event.pageX + 10}px`))
+  .on("mousemove", () => xAxisHelpTipText.style("top", `${event.pageY - 180}px`).style("left", `${event.pageX + 10}px`))
   .on("mouseout", () => xAxisHelpTipText.style("display", "none"))
 
 const xAxisHelpTip = xAxisHelpTipGroup.append("circle")
