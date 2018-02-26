@@ -253,11 +253,13 @@ a {
 
 .school-type-btns-container {
 	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
 }
 
 .school-type-btns {
 	left: 550px;
-	position: absolute;
+	/* position: absolute; */
 }
 
 .school-type-btn {

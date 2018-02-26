@@ -63,7 +63,7 @@ const xAxisHelpTipQuestionMark = xAxisHelpTipGroup.append("text")
 const xAxisHelpTipText = d3.select("body").append("p")
   .attr("class", "help-tip-text")
   .style("display", "none")
-  .text("This axis represents a country's annual teacher salary in 2015 converted to US dollars using purchasing power parity to account for cost of living. You can filter between primary, lower secondary, and upper secondary school. For example, Poland's lower secondary school teachers had a mean salary equivalent to earning $25,375 in the US.")
+  .html("This axis represents a country's annual teacher salary in 2015 converted to US dollars using purchasing power parity to account for cost of living. You can filter between primary, lower secondary, and upper secondary school.</br></br>For example, Poland's lower secondary school teachers had a mean salary equivalent to earning $25,375 in the US.")
 
 const yAxisG = g.append("g")
   .attr("class", "y axis");
@@ -95,7 +95,7 @@ const yAxisHelpTipQuestionMark = yAxisHelpTipGroup.append("text")
 const yAxisHelpTipText = d3.select("body").append("p")
   .attr("class", "help-tip-text")
   .style("display", "none")
-  .text("This axis represents the percentile ranking of a country's mean score on the 2015 Programme for International Student Assessment (PISA). You can filter by math, science, or reading scores. For example, Poland's mean score on the science PISA was higher than 61% of all other countries.")
+  .html("This axis represents the percentile ranking of a country's mean score on the 2015 Programme for International Student Assessment (PISA). You can filter by math, science, or reading scores. </br></br>For example, Poland's mean score on the science PISA was higher than 61% of all other countries.")
 
 // const yAxisHelpTipText = yAxisHelpTip.append("svg:title")
 //   .text("This axis represents the percentile ranking of a country's mean score on the 2015 Programme for International Student Assessment (PISA). You can filter by math, science, or reading scores. For example, Poland's mean score on the science PISA was higher than 61% of all other countries.")
