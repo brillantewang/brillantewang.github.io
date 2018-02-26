@@ -217,6 +217,7 @@ a {
 	display: flex;
 	justify-content: center;
   margin-top: 10px;
+	align-items: center;
 }
 
 .axis {
