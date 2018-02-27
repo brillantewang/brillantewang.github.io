@@ -22767,6 +22767,17 @@ const yAxisLabel = yAxisG.append("text")
   .attr("class", "label")
   .text(yAxisLabelText);
 
+const yAxisButtons = yAxisG.append("foreignObject")
+  .attr("class", "subject-btns")
+  .attr("x", -(yAxisLabelOffset + 110))
+  .attr("y", innerHeight / 4)
+  .html(`
+    <button class="subject-btn" id="science">Science</button>
+    <button class="subject-btn" id="math">Math</button>
+    <button class="subject-btn" id="reading">Reading</button>
+    <button class="subject-btn selected-btn" id="average">Overall</button>
+  `)
+
 const yAxisHelpTipGroup = yAxisG.append("g")
   .attr("transform", `translate(-${yAxisLabelOffset + 5}, 85)`)
   .on("mouseover", () => yAxisHelpTipText.style("display", "block"))
