@@ -3,7 +3,7 @@ import ordinal from 'ordinal';
 
 const outerWidth = 1400;
 const outerHeight = 730;
-const margin = { left: 220, top: 180, right: 100, bottom: 100 };
+const margin = { left: 220, top: 180, right: 100, bottom: 140 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
@@ -39,6 +39,22 @@ const xAxisLabel = xAxisG.append("text")
   .attr("y", xAxisLabelOffset)
   .attr("class", "label")
   .text(xAxisLabelText);
+
+const xAxisButtonsContainer = xAxisG.append("foreignObject")
+  .attr("class", "school-type-btns-container")
+  .attr("width", "100%")
+  .attr("height", "100px")
+  .attr("x", innerWidth / 4)
+  .attr("y", xAxisLabelOffset + 25)
+
+const xAxisButtons = xAxisButtonsContainer.append("xhtml:div")
+  .attr("class", "school-type-btns")
+  .html(`
+    <button class="school-type-btn" id="primary">Primary School</button>
+    <button class="school-type-btn" id="lower-secondary">Lower Secondary School</button>
+    <button class="school-type-btn" id="upper-secondary">Upper Secondary School</button>
+    <button class="school-type-btn selected-btn" id="average-salary">Average</button>
+  `)
 
 const xAxisHelpTipGroup = xAxisG.append("g")
   // .attr("x", 500)
