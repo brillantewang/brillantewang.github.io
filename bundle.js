@@ -22679,8 +22679,8 @@ function nopropagation() {
 
 
 const outerWidth = 1400;
-const outerHeight = 730;
-const margin = { left: 220, top: 180, right: 100, bottom: 140 };
+const outerHeight = 740;
+const margin = { left: 200, top: 150, right: 100, bottom: 140 };
 
 const innerWidth = outerWidth - margin.left - margin.right;
 const innerHeight = outerHeight - margin.top - margin.bottom;
